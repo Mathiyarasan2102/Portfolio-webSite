@@ -13,7 +13,7 @@ function requireEnv(name) {
     const v = process.env[name];
     if (!v) throw new Error(`Missing env: ${name}`);
     return v;
-}   
+}
 
 app.get("/", (req, res) => {
     res.json({
@@ -35,12 +35,12 @@ app.post("/send-email", async (req, res) => {
             service_id: process.env.EMAILJS_SERVICE_ID,
             template_id: process.env.EMAILJS_TEMPLATE_ID,
             user_id: process.env.EMAILJS_PUBLIC_KEY,
-            accessToken: process.env.EMAILJS_PRIVATE_KEY, 
+            accessToken: process.env.EMAILJS_PRIVATE_KEY,
             template_params: {
-                fname: name,
-                email: email,
-                subject: subject,
-                message: message,
+                name, 
+                email, 
+                subject,  
+                message,
             },
         };
 

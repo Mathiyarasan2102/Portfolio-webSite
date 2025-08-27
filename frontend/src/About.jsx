@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import img from "./assets/img.jpg"
 export default function About() {
 
-    const [isVisible,setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -19,14 +19,10 @@ export default function About() {
     }, []);
 
     const handleDownloadResume = () => {
-        const resumePath = "/Mathiyarasan.P Web Developer.pd"; // public/ file
-        const a = document.createElement("a");
-        a.href = resumePath;
-        a.download = "Mathiyarasan-P-Resume.pdf";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
+        const driveLink = "https://drive.google.com/file/d/18weDjUFPuNOXRAsDmRGg4FZCoNJh8qoi/view?usp=drivesdk"; 
+        window.open(driveLink, "_blank"); 
     };
+
 
     const items = [
         { label: "Name", value: "Mathiyarasan.P" },
