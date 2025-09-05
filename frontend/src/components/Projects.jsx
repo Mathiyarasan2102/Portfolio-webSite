@@ -8,6 +8,8 @@ import p4 from '../assets/prjImg/p4.png'
 import p5 from '../assets/prjImg/p5.png'
 import p6 from '../assets/prjImg/p6.png'
 import p7 from '../assets/prjImg/p7.png'
+import p8 from '../assets/prjImg/p8.png'
+import p9 from '../assets/prjImg/p9.png'
 
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
@@ -73,6 +75,20 @@ export default function Projects() {
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/"
         },
+
+        {
+            id: 8,
+            title: "Netflix Login Page",
+            description: `A responsive login interface inspired by Netflix, built with React (Vite) and Node.js (Express). Features user authentication, form validation, and seamless navigation.
+Demo credentials:
+Email: mathiarasan.2102@gmail.com
+Password: 221304`,
+            image: p8,
+            technologies: ["React", "Tailwind CSS"],
+            category: "Web App",
+            git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
+            live: "https://netflix-login-page-2rgp.vercel.app/"
+        },
         {
             id: 3,
             title: "Apple India clone",
@@ -82,6 +98,17 @@ export default function Projects() {
             category: "Web App",
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
             live: "https://clone-apple-lilac.vercel.app/"
+        },
+
+        {
+            id: 9,
+            title: "Form Validation and Character Count",
+            description: "Developed a dynamic form with instant input validation and a character-counting message box. Demonstrates front-end skills in HTML, CSS, and JavaScript.",
+            image: p9,
+            technologies: ["HTML5", "CSS3", "JavaScript"],
+            category: "Web App",
+            git: "https://github.com/Mathiyarasan2102/form-validation",
+            live: "https://mathiyarasan2102.github.io/form-validation/"
         },
         {
             id: 4,
