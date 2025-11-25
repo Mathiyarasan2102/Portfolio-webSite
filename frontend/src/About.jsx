@@ -87,7 +87,7 @@ export default function About() {
                                     <p className={`text-lg transition-all duration-100 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                                         I am a junior web developer skilled in the MERN stack (MongoDB, Express.js, React.js, Node.js). I build responsive, full-stack web apps with clean, scalable code and love contributing to collaborative teams.
                                     </p>
-                                    <p className={` transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}> I’ve worked on projects like an Apple website clone, a weather app using the OpenWeather API, the Nostra e-commerce landing page, and a TripAdvisor clone focusing on modern UI/UX, performance, and mobile responsiveness. </p>
+                                    <p className={` transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}> I’ve worked on projects like an QuickChat Real time Chat App using MERN Stack, a Weather app using the OpenWeather API, the Nostra e-commerce landing page, and a TripAdvisor clone focusing on modern UI/UX, performance, and mobile responsiveness. </p>
                                 </div>
                                 <div className={`grid grid-cols-2 gap-4 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                                     {items.map((item, index) => (
