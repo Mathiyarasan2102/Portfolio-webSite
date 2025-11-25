@@ -50,7 +50,7 @@ export default function Projects() {
             title: "QuickChat Realtime Chat App",
             description: "A dynamic real-time messaging application built with the MERN stack and Socket.io, facilitating instant communication and secure authentication via JWT. Designed with Tailwind CSS for a responsive, modern interface and seamless connectivity across devices.",
             image: p7,
-            technologies: ["ReactJs", "MongoDB", "ExpressJs", "NodeJs", "Tailwind CSS, SocketIO,JWT,Bcrypt"],
+            technologies: ["ReactJs", "MongoDB", "ExpressJs", "NodeJs", "Tailwind CSS", "SocketIO","JWT","Bcrypt"],
             category: "MERN Chat App",
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app"
