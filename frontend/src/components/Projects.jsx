@@ -7,7 +7,7 @@ import p3 from '../assets/prjImg/p3.png'
 import p4 from '../assets/prjImg/p4.png'
 import p5 from '../assets/prjImg/p5.png'
 import p6 from '../assets/prjImg/p6.png'
-import p7 from '../assets/prjImg/p7.png'
+import p7 from '../assets/prjImg/prj7-Copy.png'
 import p8 from '../assets/prjImg/p8.png'
 import p9 from '../assets/prjImg/p9.png'
 
@@ -47,13 +47,13 @@ export default function Projects() {
     const projects = [
         {
             id: 7,
-            title: "NovaMart E-Commerce",
-            description: "A modern e-commerce platform built with the MERN stack, offering seamless shopping, cart, and order management features. Designed for scalability, security, and a smooth user experience across devices.",
+            title: "QuickChat Realtime Chat App",
+            description: "A dynamic real-time messaging application built with the MERN stack and Socket.io, facilitating instant communication and secure authentication via JWT. Designed with Tailwind CSS for a responsive, modern interface and seamless connectivity across devices.",
             image: p7,
-            technologies: ["React", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
-            category: "MERN App",
-            git: "https://github.com/Mathiyarasan2102/novamart-mern-ecommerce",
-            live: "https://novamart-mern-ecommerce.vercel.app/"
+            technologies: ["ReactJs", "MongoDB", "ExpressJs", "NodeJs", "Tailwind CSS, SocketIO,JWT,Bcrypt"],
+            category: "MERN Chat App",
+            git: "https://github.com/Mathiyarasan2102/ChatApp",
+            live: "https://quick-chat-app-puce.vercel.app"
         },
         {
             id: 1,
