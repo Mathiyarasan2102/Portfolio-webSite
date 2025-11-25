@@ -7,7 +7,7 @@ import p3 from '../assets/prjImg/p3.png'
 import p4 from '../assets/prjImg/p4.png'
 import p5 from '../assets/prjImg/p5.png'
 import p6 from '../assets/prjImg/p6.png'
-import p7 from '../assets/prjImg/prj7-Copy.png'
+import p7 from '../assets/prjImg/prj7 - Copy.png'
 import p8 from '../assets/prjImg/p8.png'
 import p9 from '../assets/prjImg/p9.png'
 
