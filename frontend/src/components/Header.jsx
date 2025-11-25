@@ -29,7 +29,7 @@ export default function Header() {
     };
 
     const handleDownloadResume = () => {
-        const driveLink = "https://drive.google.com/file/d/18weDjUFPuNOXRAsDmRGg4FZCoNJh8qoi/view?usp=drivesdk"; 
+        const driveLink = "https://drive.google.com/file/d/1i2Tmapludo521oUzmB70wnR1JDBDpnqF/view?usp=sharing"; 
         window.open(driveLink, "_blank");
     };
 
