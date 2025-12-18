@@ -1,23 +1,29 @@
 import { useEffect, useState, useRef } from "react";
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaJava } from "react-icons/fa";
-import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython } from "react-icons/si";
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaJava, FaServer } from "react-icons/fa";
+import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens } from "react-icons/si";
 
-const skills = [
-    { name: "HTML5", icon: <FaHtml5 size={30} color="#E34F26" />, level: 90 },
-    { name: "CSS3", icon: <FaCss3Alt size={40} color="#1572B6" />, level: 85 },
-    { name: "Tailwind CSS", icon: <SiTailwindcss size={40} color="#06B6D4" />, level: 80 },
-    { name: "JavaScript", icon: <SiJavascript size={40} color="#E5C100" />, level: 75 },
-    { name: "React.js", icon: <FaReact size={40} color="#61DAFB" />, level: 80 },
-    { name: "Node.js", icon: <FaNodeJs size={40} color="#339933" />, level: 70 },
-    { name: "Express.js", icon: <SiExpress size={40} color="#000000" />, level: 65 },
-    { name: "MongoDB", icon: <SiMongodb size={40} color="#47A248" />, level: 70 }
+const coreStack = [
+    { name: "JavaScript", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
+    { name: "React.js", icon: <FaReact size={40} color="#61DAFB" />, level: "Proficient" },
+    { name: "Node.js", icon: <FaNodeJs size={40} color="#339933" />, level: "Comfortable" },
+    { name: "Express.js", icon: <SiExpress size={40} color="#000000" />, level: "Comfortable" },
+    { name: "MongoDB", icon: <SiMongodb size={40} color="#47A248" />, level: "Comfortable" },
+    { name: "HTML5", icon: <FaHtml5 size={30} color="#E34F26" />, level: "Proficient" },
+    { name: "CSS3", icon: <FaCss3Alt size={40} color="#1572B6" />, level: "Proficient" },
+    { name: "Tailwind CSS", icon: <SiTailwindcss size={40} color="#06B6D4" />, level: "Proficient" },
 ];
 
-const tools = [
-    { name: "Git", icon: <FaGitAlt size={40} color="#F05032" />, level: 80 },
-    { name: "GitHub", icon: <FaGithub size={40} color="#181717" />, level: 85 },
-    { name: "Python", icon: <SiPython size={40} color="#3776AB" />, level: 75 },
-    { name: "Java", icon: <FaJava size={40} color="#F89820" />, level: 70 }
+const backendTools = [
+    { name: "REST APIs", icon: <FaServer size={40} color="#2563EB" />, level: "Proficient" },
+    { name: "JWT Auth", icon: <SiJsonwebtokens size={40} color="#D63AFF" />, level: "Comfortable" },
+    { name: "Socket.io", icon: <SiSocketdotio size={40} color="#010101" />, level: "Familiar" },
+    { name: "Git", icon: <FaGitAlt size={40} color="#F05032" />, level: "Proficient" },
+    { name: "GitHub", icon: <FaGithub size={40} color="#181717" />, level: "Proficient" },
+];
+
+const fundamentals = [
+    { name: "Python", icon: <SiPython size={40} color="#3776AB" />, level: "Basics / DSA" },
+    { name: "Java", icon: <FaJava size={40} color="#F89820" />, level: "OOP / DSA" },
 ];
 
 const education = [
@@ -35,55 +41,6 @@ const education = [
     }
 ];
 
-function Counter({ target, start }) {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        if (!start) return;
-        let startVal = 0;
-        const duration = 1000;
-        const stepTime = 10;
-        const increment = target / (duration / stepTime);
-
-        const timer = setInterval(() => {
-            startVal += increment;
-            if (startVal >= target) {
-                startVal = target;
-                clearInterval(timer);
-            }
-            setCount(Math.floor(startVal));
-        }, stepTime);
-
-        return () => clearInterval(timer);
-    }, [target, start]);
-
-    return <span>{count}%</span>;
-}
-
-function AnimatedProgress({ target, start }) {
-    const [width, setWidth] = useState(0);
-
-    useEffect(() => {
-        if (start) {
-            const timeout = setTimeout(() => {
-                setWidth(target);
-            }, 100);
-            return () => clearTimeout(timeout);
-        } else {
-            setWidth(0);
-        }
-    }, [target, start]);
-
-    return (
-        <div className="w-full bg-gray-200 rounded-full h-2 mt-2 overflow-hidden">
-            <div
-                className="bg-green-500 h-2 rounded-full transition-all duration-1000 ease-out"
-                style={{ width: `${width}%` }}
-            ></div>
-        </div>
-    );
-}
-
 export default function Skills() {
     const sectionRef = useRef(null);
     const [visible, setVisible] = useState(false);
@@ -93,11 +50,9 @@ export default function Skills() {
             (entries) => {
                 if (entries[0].isIntersecting) {
                     setVisible(true);
-                } else {
-                    setVisible(false);
                 }
             },
-            { threshold: 0.3 }
+            { threshold: 0.1 }
         );
 
         if (sectionRef.current) observer.observe(sectionRef.current);
@@ -116,13 +71,13 @@ export default function Skills() {
 
             <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    {/* Left Education */}
-                    <div className="transition-all duration-1000">
+                    {/* Left Education & Fundamentals */}
+                    <div className={`transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                         <div className="mb-12">
                             <p className="text-green-400 font-semibold text-lg mb-4">Qualification</p>
                             <p className="text-green-400 text-4xl sm:text-5xl font-bold mb-8">Education</p>
                         </div>
-                        <div className="space-y-8">
+                        <div className="space-y-8 mb-16">
                             {education.map((edu, index) => (
                                 <div
                                     key={index}
@@ -144,46 +99,67 @@ export default function Skills() {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Programming Fundamentals moved to Left */}
+                        <div>
+                            <div className="mb-8">
+                                <p className="text-3xl sm:text-4xl font-black text-white">Programming Fundamentals</p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                {fundamentals.map((lang, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-orange-600/20 hover:-translate-y-2 transition duration-300 border border-white/10"
+                                    >
+                                        <div className="mb-3">{lang.icon}</div>
+                                        <span className="text-white font-bold text-base">{lang.name}</span>
+                                        <span className="text-orange-400 text-xs mt-1 uppercase tracking-wider font-semibold">{lang.level}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Right Skills & Tools */}
-                    <div className="transition-all -mt-10 duration-1000 delay-300 space-y-12">
-                        <div className="mb-12">
-                            <p className="text-green-400 font-semibold text-lg mb-4">Expert</p>
-                            <p className="text-4xl sm:text-5xl font-black text-white mb-8">My Skills</p>
+                    <div className={`transition-all duration-1000 delay-300 space-y-12 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+
+                        {/* Core Stack */}
+                        <div>
+                            <div className="mb-8">
+                                <p className="text-green-400 font-semibold text-lg mb-4">Core Stack</p>
+                                <p className="text-3xl sm:text-4xl font-black text-white">MERN & Frontend</p>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                {coreStack.map((skill, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-green-600/20 hover:-translate-y-2 transition duration-300 border border-white/10"
+                                    >
+                                        <div className="mb-3">{skill.icon}</div>
+                                        <span className="text-white font-bold text-base">{skill.name}</span>
+                                        <span className="text-green-400 text-xs mt-1 uppercase tracking-wider font-semibold">{skill.level}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-stretch">
-                            {skills.map((skill, index) => (
-                                <div
-                                    key={index}
-                                    className="flex flex-col items-center justify-between p-4 rounded-xl bg-white hover:bg-green-400 transition duration-300 shadow-lg h-36 sm:h-40"
-                                >
-                                    {skill.icon}
-                                    <span className="mt-2 text-sm sm:text-lg font-medium">{skill.name}</span>
-                                    <AnimatedProgress target={skill.level} start={visible} />
-                                    <span className="text-xs sm:text-sm text-gray-600 mt-1">
-                                        <Counter target={skill.level} start={visible} />
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <p className="text-4xl sm:text-5xl font-black -mt-10 text-white mb-8">Tools & Others</p>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
-                            {tools.map((tool, index) => (
-                                <div
-                                    key={index}
-                                    className="flex flex-col items-center p-4 rounded-xl bg-white hover:bg-green-400 transition duration-300 shadow-lg w-full h-36 sm:h-40"
-                                >
-                                    {tool.icon}
-                                    <span className="mt-2 text-sm sm:text-lg font-medium">{tool.name}</span>
-                                    <AnimatedProgress target={tool.level} start={visible} />
-                                    <span className="text-xs sm:text-sm text-gray-600 mt-1">
-                                        <Counter target={tool.level} start={visible} />
-                                    </span>
-                                </div>
-                            ))}
+                        {/* Tools & Backend Workflow */}
+                        <div>
+                            <div className="mb-8">
+                                <p className="text-3xl sm:text-4xl font-black text-white">Tools & Backend Workflow</p>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                {backendTools.map((tool, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-blue-600/20 hover:-translate-y-2 transition duration-300 border border-white/10"
+                                    >
+                                        <div className="mb-3">{tool.icon}</div>
+                                        <span className="text-white font-bold text-base">{tool.name}</span>
+                                        <span className="text-blue-400 text-xs mt-1 uppercase tracking-wider font-semibold">{tool.level}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -27,16 +27,14 @@ export default function Footer() {
                                 <span className="text-green-500 group-hover:text-green-400 transition-all duration-300">Mathiy</span>
                                 <span className="text-white group-hover:text-green-400 transition-all duration-300">arasan.</span>
                                 <span className="text-green-500 group-hover:text-green-400 transition-all duration-300">P</span>
-                                <p className="text-gray-400 hover:text-gray-300 text-sm sm:text-base">Full Stack Developer</p>
+                                <p className="text-gray-400 hover:text-gray-300 text-sm sm:text-base">Full Stack MERN Developer</p>
                             </div>
                         </div>
 
                         {/* Made with ❤️ + Scroll Btn */}
                         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8">
                             <div className="flex items-center gap-2 text-gray-400 text-sm sm:text-base">
-                                <span>Made with</span>
-                                <Heart className="w-4 h-4 text-green-500 fill-current" />
-                                <span>by Mathiyarasan.P</span>
+                                <span>Built with React & Tailwind by Mathiyarasan.P</span>
                             </div>
                             <button
                                 className="w-9 h-9 sm:w-10 sm:h-10 bg-green-600 rounded-full flex justify-center items-center hover:bg-green-700 transition-all duration-300 hover:scale-110 hover:rotate-12"
