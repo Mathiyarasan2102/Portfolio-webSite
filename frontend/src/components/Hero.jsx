@@ -9,7 +9,7 @@ const socials = [
   { href: "https://www.linkedin.com/in/mathiyarasan-p", Icon: LinkedinIcon },
   { href: "https://wa.me/917558105547", Icon: FaWhatsapp },
   { href: "https://www.instagram.com/itz_mathi_king/", Icon: InstagramIcon },
-  { href: "mailto:mathiarasan.2102@gmailcom", Icon: Mail },
+  { href: "mailto:mathiarasan.2102@gmail.com", Icon: Mail },
 ];
 
 export default function Hero() {
@@ -39,56 +39,50 @@ export default function Hero() {
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             <div className="flex-col items-center lg:items-start px-4 sm:px-8 md:px-12 lg:px-16 space-y-4">
               <p
-                className={`text-green-400 font-semibold text-base sm:text-lg md:text-xl transition-all duration-1000 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`text-green-400 font-semibold text-base sm:text-lg md:text-xl transition-all duration-1000 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 Get Ready to Start Work
               </p>
 
               <h1
-                className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight transition-all duration-1000 delay-200 ${
-                  isVisible
+                className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight transition-all duration-1000 delay-200 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
+              >
+                Full Stack MERN{" "}
+                <span
+                  className={`text-green-400 ${isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
-                }`}
-              >
-                I'm{" "}
-                <span
-                  className={`text-green-400 ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-10"
-                  }`}
+                    }`}
                 >
                   Developer
                 </span>
                 <br />
-                <span className="text-white">Mathiyarasan.P</span>
+                <span className="text-white text-xl sm:text-2xl md:text-3xl leading-snug block mt-4">
+                  building real-world, scalable web applications
+                </span>
               </h1>
 
               <p
-                className={`text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-md sm:max-w-lg mx-auto lg:mx-0 transition-all duration-1000 delay-500 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-md sm:max-w-lg mx-auto lg:mx-0 transition-all duration-1000 delay-500 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
-                Junior Web Developer skilled in MERN stack, with hands-on
-                experience in responsive web applications. Strong foundation in
-                clean code, modern UI/UX, and eager to contribute to dynamic
-                teams.
+                I build full-stack MERN applications with clean architecture, secure authentication, real-time features, and a strong focus on performance and user experience.
               </p>
 
               {/* Buttons */}
               <div
-                className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 transition-all duration-1000 delay-500 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 transition-all duration-1000 delay-500 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 <button
                   onClick={() =>
@@ -105,8 +99,8 @@ export default function Hero() {
 
                 <button
                   onClick={() =>
-                    (window.location.href =
-                      "mailto:mathiarasan.2102@gmail.com?subject=Regarding Job Opportunity - Junior Web Developer&body=Hello Mathiyarasan,%0D%0A%0D%0AI came across your portfolio and would like to discuss a potential job opportunity with you.%0D%0A%0D%0ARegards,%0D%0A[Your Name]")
+                  (window.location.href =
+                    "mailto:mathiarasan.2102@gmail.com?subject=Regarding Job Opportunity - Junior Web Developer&body=Hello Mathiyarasan,%0D%0A%0D%0AI came across your portfolio and would like to discuss a potential job opportunity with you.%0D%0A%0D%0ARegards,%0D%0A[Your Name]")
                   }
                   className="border-2 border-slate-600 text-white px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg hover:border-green-600 hover:text-green-400 transition-all duration-300 font-medium flex items-center gap-2 group hover:scale-105 text-sm sm:text-base"
                 >
@@ -116,17 +110,16 @@ export default function Hero() {
 
               {/* Social Icons */}
               <div
-                className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 sm:pt-6 transition-all duration-100 delay-800 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 sm:pt-6 transition-all duration-100 delay-800 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 {socials.map(({ href, Icon }, index) => (
                   <a
                     key={index}
                     href={href}
-                    target="_blank"
+                    target={href.startsWith("mailto") ? undefined : "_blank"}
                     rel="noopener noreferrer"
                     className={baseClasses}
                   >
@@ -139,11 +132,10 @@ export default function Hero() {
 
           {/* Right Content */}
           <div
-            className={`relative transition-all duration-1000 delay-300 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`relative transition-all duration-1000 delay-300 ${isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
           >
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
               <div className="relative group">

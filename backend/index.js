@@ -37,9 +37,9 @@ app.post("/send-email", async (req, res) => {
             user_id: process.env.EMAILJS_PUBLIC_KEY,
             accessToken: process.env.EMAILJS_PRIVATE_KEY,
             template_params: {
-                name, 
-                email, 
-                subject,  
+                name,
+                email,
+                subject,
                 message,
             },
         };

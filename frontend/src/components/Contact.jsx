@@ -94,11 +94,14 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-4">
-                            {[{ icon: Mail, title: "Email", info: "mathiyarasan.2102@gmail.com" }, { icon: Phone, title: "Phone", info: "+91 7558105547" }, { icon: MapPin, title: "Location", info: "Trichy, Tamil Nadu" }]
+                            {[{ icon: Mail, title: "Email", info: "mathiarasan.2102@gmail.com", link: "mailto:mathiarasan.2102@gmail.com" },
+                            { icon: Phone, title: "Phone", info: "+91 7558105547", link: "tel:+917558105547" },
+                            { icon: MapPin, title: "Location", info: "Trichy, Tamil Nadu", link: null }]
                                 .map((contact, index) => (
-                                    <div
+                                    <a
                                         key={index}
-                                        className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-slate-900 rounded-lg hover:bg-slate-700 transition-all duration-300 border border-slate-700 hover:border-green-500 group cursor-pointer transform hover:scale-105"
+                                        href={contact.link || undefined}
+                                        className={`flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-slate-900 rounded-lg hover:bg-slate-700 transition-all duration-300 border border-slate-700 hover:border-green-500 group cursor-pointer transform hover:scale-105 ${!contact.link ? 'cursor-default hover:scale-100' : ''}`}
                                     >
                                         <div className="w-9 h-9 sm:w-10 sm:h-10 bg-green-600 rounded-lg flex items-center justify-center group-hover:bg-green-500 transition-all duration-300">
                                             <contact.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -111,7 +114,7 @@ export default function Contact() {
                                                 {contact.info}
                                             </p>
                                         </div>
-                                    </div>
+                                    </a>
                                 ))}
                         </div>
 
@@ -124,6 +127,8 @@ export default function Contact() {
                                 </a>
                             ))}
                         </div>
+
+
                     </div>
 
                     {/* Contact Form */}

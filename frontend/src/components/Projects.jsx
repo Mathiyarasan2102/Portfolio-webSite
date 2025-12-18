@@ -13,140 +13,120 @@ import p9 from '../assets/prjImg/p9.png'
 
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
-    const [showAll, setShowAll] = useState(null);
-
-    useEffect(() => {
-        if (showAll === null) return;
-        if (showAll) {
-            const target = document.getElementById("projects-more");
-            scrollToWithOffset(target, 120);
-        } else {
-            const section = document.getElementById("projects");
-            scrollToWithOffset(section, 120);
-        }
-    }, [showAll]);
-
-    const scrollToWithOffset = (el, offset = 80) => {
-        if (!el) return;
-        const y = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-    };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.intersectionRatio) setIsVisible(true);
             },
-            { threshold: 0.3 }
+            { threshold: 0.1 }
         );
         const element = document.getElementById("projects");
         if (element) observer.observe(element);
         return () => observer.disconnect();
     }, []);
 
-    const projects = [
+    const featuredProjects = [
         {
             id: 7,
-            title: "QuickChat Realtime Chat App",
-            description: "A dynamic real-time messaging application built with the MERN stack and Socket.io, facilitating instant communication and secure authentication via JWT. Designed with Tailwind CSS for a responsive, modern interface and seamless connectivity across devices.",
+            title: "QuickChat Realtime App",
+            type: "MERN Chat Application",
+            description: "Built a real-time messaging platform to facilitate instant communication using the MERN stack and Socket.io, with a focus on low-latency updates and secure authentication.",
+            problem: "Users require instant, reliable messaging without page refreshes.",
+            responsibility: "Full Stack Development",
+            techChallenge: "Handling concurrent socket connections and real-time state synchronization.",
             image: p7,
-            technologies: ["ReactJs", "MongoDB", "ExpressJs", "NodeJs", "Tailwind CSS", "SocketIO","JWT","Bcrypt"],
-            category: "MERN Chat App",
+            technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "JWT"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app"
         },
         {
             id: 1,
-            title: "Weather App",
-            description: "A real-time weather forecasting application built with React and Vite, utilizing the OpenWeatherMap API to deliver accurate weather updates. Designed with a clean and responsive UI using Tailwind CSS.",
+            title: "Weather Dashboard",
+            type: "Data Visualization Web App",
+            description: "Built a weather dashboard to provide accurate location-based forecasts using React and OpenWeatherMap API, focusing on responsive design and API data visualization.",
+            problem: "Need for accurate, real-time weather data visualization across devices.",
+            responsibility: "Frontend Development",
+            techChallenge: "Efficiently managing asynchronous API state and error handling.",
             image: p1,
             technologies: ["React", "Tailwind CSS", "OpenWeather API"],
-            category: "Web App",
             git: "https://github.com/Mathiyarasan2102/Weather-App",
             live: "https://weather-app-seven-eta-19.vercel.app/"
         },
         {
             id: 2,
-            title: "Task Management",
-            description: "A full-stack task management application built with React and Vite, offering user authentication, task creation, editing, and deletion functionalities. Designed with a clean and responsive UI using Tailwind CSS. Utilizes Firebase for user authentication and Firestore for real-time data storage.",
+            title: "Task Management App",
+            type: "Productivity Tool",
+            description: "Built a collaborative task manager to streamline team productivity using React and Firebase, with a focus on real-time updates and intuitive UI.",
+            problem: "Teams struggle to track tasks efficiently in real-time.",
+            responsibility: "Frontend & Integration",
+            techChallenge: "Optimizing Firestore reads/writes for real-time responsiveness.",
             image: p2,
-            technologies: ["React", "Tailwind CSS"],
-            category: "Web App",
+            technologies: ["React", "Tailwind CSS", "Firebase"],
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/"
         },
+    ];
 
+    const otherProjects = [
         {
             id: 8,
-            title: "Netflix Login Page",
-            description: `A responsive login interface inspired by Netflix, built with React (Vite) and Node.js (Express). Features user authentication, form validation, and seamless navigation.
-Demo credentials:
-Email: mathiarasan.2102@gmail.com
-Password: 221304`,
+            title: "Netflix Login Interface",
+            description: "Responsive login interface with validation and seamless navigation.",
             image: p8,
             technologies: ["React", "Tailwind CSS"],
-            category: "Web App",
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
             live: "https://netflix-login-page-2rgp.vercel.app/"
         },
         {
             id: 3,
-            title: "Apple India clone",
-            description: "A responsive Apple homepage replica built with React, Vite, and Tailwind CSS. Features include smooth animations and a clean, modern design.",
+            title: "Apple Homepage Clone",
+            description: "High-fidelity replica of Apple's landing page featuring smooth animations.",
             image: p3,
             technologies: ["React", "Tailwind CSS"],
-            category: "Web App",
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
             live: "https://clone-apple-lilac.vercel.app/"
         },
-
         {
             id: 9,
-            title: "Form Validation and Character Count",
-            description: "Developed a dynamic form with instant input validation and a character-counting message box. Demonstrates front-end skills in HTML, CSS, and JavaScript.",
+            title: "Smart Form Validation",
+            description: "Dynamic form with instant input validation and character counting logic.",
             image: p9,
             technologies: ["HTML5", "CSS3", "JavaScript"],
-            category: "Web App",
             git: "https://github.com/Mathiyarasan2102/form-validation",
             live: "https://mathiyarasan2102.github.io/form-validation/"
         },
         {
             id: 4,
-            title: "Nostra Web page",
-            description: "A sleek, responsive e-commerce landing page showcasing summer collections, popular brands, and exclusive offers. Built with HTML, CSS, and JavaScript, featuring modern UI elements and smooth animations.",
+            title: "Nostra E-Commerce",
+            description: "Responsive e-commerce landing page optimized for mobile conversions.",
             image: p4,
-            technologies: ["HTML%", "CSS3", "Java Script"],
-            category: "Web App",
+            technologies: ["HTML", "CSS", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/Nostra-Project",
             live: "https://mathiyarasan2102.github.io/Nostra-Project/"
         },
         {
             id: 5,
-            title: "Greenden Wb page",
-            description: "A vibrant, responsive e-commerce website showcasing a wide range of artificial and natural plants. Built with HTML, CSS, and JavaScript, featuring a clean and modern design.",
+            title: "Greenden Plants",
+            description: "Modern e-commerce showcase for plant products with clean design.",
             image: p5,
             technologies: ["HTML5", "CSS3"],
-            category: "Web App",
             git: "https://github.com/Mathiyarasan2102/Greenden-Project",
             live: "https://mathiyarasan2102.github.io/Greenden-Project/"
         },
         {
             id: 6,
             title: "Udemy Clone",
-            description: "A responsive e-learning platform inspired by Udemy, built with HTML, CSS, and JavaScript. Features include a course catalog, course details page, and a user-friendly interface.",
+            description: "Instructional platform UI replica with course listing structure.",
             image: p6,
             technologies: ["HTML5", "CSS3"],
-            category: "Web App",
             git: "https://github.com/Mathiyarasan2102/Udemy-clone-website",
             live: "https://mathiyarasan2102.github.io/Udemy-clone-website/"
         }
     ];
 
-    const visibleProjects = showAll ? projects : projects.slice(0, 3);
-
     return (
         <section id="projects" className="py-24 bg-slate-950 relative overflow-hidden">
-            {/* Animated background */}
             <div className="absolute inset-0">
                 <div className="absolute top-20 left-10 w-72 h-72 bg-green-600/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -154,27 +134,29 @@ Password: 221304`,
             </div>
 
             <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-                <div className={`text-center -mt-15 mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-30"}`}>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white -mt-10 mb-6">
+                {/* Header */}
+                <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Featured Projects
                     </h2>
                     <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                        Here are some of recent projects that showcase my skills and expertise
+                        Scalable applications built with modern architecture and performance in mind.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-5">
-                    {visibleProjects.map((project, index) => (
+                {/* Featured Projects Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
+                    {featuredProjects.map((project, index) => (
                         <div
                             key={index}
-                            id={index === 3 ? "projects-more" : undefined}
-                            className={`group bg-slate-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-500 overflow-hidden border border-slate-700 hover:border-green-500 hover:scale-105 ${!showAll && index >= 3 ? "hidden" : ""}`}
+                            className={`flex flex-col bg-slate-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-500 overflow-hidden border border-slate-700 hover:border-green-500 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                            style={{ transitionDelay: `${index * 150}ms` }}
                         >
-                            <div className="relative overflow-hidden">
+                            <div className="relative overflow-hidden h-56 flex-shrink-0">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-60 sm:h-64 md:h-72 object-cover group-hover:scale-105 transition-all duration-300"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                                 />
                                 <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                     <a href={project.git} target="_blank" rel="noopener noreferrer">
@@ -190,23 +172,28 @@ Password: 221304`,
                                 </div>
                             </div>
 
-                            <div className="p-5 sm:p-6">
+                            <div className="p-6 flex flex-col flex-grow">
                                 <div className="flex items-center justify-between mb-3">
-                                    <span className="bg-slate-800 text-gray-400 px-2 py-1 rounded-full text-xs font-medium">
-                                        {project.category}
+                                    <span className="bg-green-900/30 text-green-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
+                                        {project.type}
                                     </span>
                                 </div>
-                                <h4 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-all duration-300">
+                                <h4 className="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-all duration-300">
                                     {project.title}
                                 </h4>
-
-                                <p className="text-gray-300 text-sm sm:text-base mb-4 leading-relaxed max-h-16 sm:max-h-20 md:max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+                                <p className="text-gray-300 text-sm leading-relaxed mb-4">
                                     {project.description}
                                 </p>
 
-                                <div className="flex flex-wrap gap-1 mb-4">
+                                <div className="space-y-2 mb-6 text-xs text-gray-400 border-t border-slate-800 pt-4 mt-auto">
+                                    <p><strong className="text-slate-300">Problem:</strong> {project.problem}</p>
+                                    <p><strong className="text-slate-300">Role:</strong> {project.responsibility}</p>
+                                    <p><strong className="text-slate-300">Challenge:</strong> {project.techChallenge}</p>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.technologies.map((tech, idx) => (
-                                        <span key={idx} className="bg-green-600 text-white px-2 py-1 rounded-full text-xs sm:text-sm font-medium">
+                                        <span key={idx} className="bg-slate-800 text-gray-300 px-2 py-1 rounded text-xs font-medium border border-slate-700">
                                             {tech}
                                         </span>
                                     ))}
@@ -216,16 +203,47 @@ Password: 221304`,
                     ))}
                 </div>
 
-                {projects.length > 3 && (
-                    <div className={`text-center transition-all duration-1000 delay-1000 mt-5 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                        <button
-                            onClick={() => setShowAll(!showAll)}
-                            className="bg-green-600 cursor-pointer mt-10 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105"
+                {/* Other Projects Section */}
+                <div className={`text-center mb-10 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                        Other Projects
+                    </h3>
+                    <p className="text-gray-400 text-base">
+                        UI Clones & Small Applications
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {otherProjects.map((project, index) => (
+                        <div
+                            key={index}
+                            className={`group bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                            style={{ transitionDelay: `${(index + featuredProjects.length) * 100}ms` }}
                         >
-                            {showAll ? "Show Less" : "View All Projects"}
-                        </button>
-                    </div>
-                )}
+                            <div className="p-5">
+                                <div className="flex justify-between items-start mb-4">
+                                    <h4 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
+                                        {project.title}
+                                    </h4>
+                                    <div className="flex gap-2">
+                                        <a href={project.git} target="_blank" className="text-gray-400 hover:text-white"><Github size={16} /></a>
+                                        <a href={project.live} target="_blank" className="text-gray-400 hover:text-white"><ExternalLink size={16} /></a>
+                                    </div>
+                                </div>
+                                <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                                    {project.description}
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.technologies.slice(0, 3).map((tech, idx) => (
+                                        <span key={idx} className="text-xs text-slate-500 bg-slate-950 px-2 py-1 rounded">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

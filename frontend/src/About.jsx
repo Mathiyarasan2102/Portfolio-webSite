@@ -19,8 +19,8 @@ export default function About() {
     }, []);
 
     const handleDownloadResume = () => {
-        const driveLink = "https://drive.google.com/file/d/1i2Tmapludo521oUzmB70wnR1JDBDpnqF/view?usp=sharing"; 
-        window.open(driveLink, "_blank"); 
+        const driveLink = "https://drive.google.com/file/d/1i2Tmapludo521oUzmB70wnR1JDBDpnqF/view?usp=sharing";
+        window.open(driveLink, "_blank");
     };
 
 
@@ -44,7 +44,7 @@ export default function About() {
 
                 <div className="px-6 py-4">
                     <div className="relative z-10">
-                        <div className="grid lg:grid-cols-2 gap-16 items-space">
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
                             {/* left image */}
                             <div className={`relative transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                                 <div className="relative group ">
@@ -80,7 +80,7 @@ export default function About() {
                                         </span>
                                     </h2>
                                     <p className="text-green-400 font-semibold delay-200">
-                                        Mern Stack Dveloper
+                                        MERN Stack Developer
                                     </p>
                                 </div>
                                 <div className="space-y-6 text-gray-300 leading-relaxed">
@@ -88,6 +88,17 @@ export default function About() {
                                         I am a junior web developer skilled in the MERN stack (MongoDB, Express.js, React.js, Node.js). I build responsive, full-stack web apps with clean, scalable code and love contributing to collaborative teams.
                                     </p>
                                     <p className={` transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}> I’ve worked on projects like an QuickChat Real time Chat App using MERN Stack, a Weather app using the OpenWeather API, the Nostra e-commerce landing page, and a TripAdvisor clone focusing on modern UI/UX, performance, and mobile responsiveness. </p>
+
+                                    {/* How I Work Section */}
+                                    <div className={`mt-6 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"} transition-all duration-1000 delay-900`}>
+                                        <h3 className="text-xl font-bold text-white mb-3">How I Work</h3>
+                                        <ul className="list-disc list-inside space-y-2 text-gray-300">
+                                            <li>I break real-world problems into scalable features</li>
+                                            <li>I focus on clean, reusable, and maintainable code</li>
+                                            <li>I enjoy debugging, refactoring, and improving existing systems</li>
+                                            <li>I collaborate well and adapt quickly in team environments</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div className={`grid grid-cols-2 gap-4 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                                     {items.map((item, index) => (

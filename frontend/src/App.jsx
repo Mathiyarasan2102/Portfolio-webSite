@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
+import SystemThinking from './components/SystemThinking'
 
 
 function App() {
@@ -13,15 +14,16 @@ function App() {
   return (
     <>
       <div className='bg-gray-900'>
-        <Header /> 
+        <Header />
         <Hero />
         <About />
         <Skills />
         <Projects />
+        <SystemThinking />
         <Contact />
         <Footer />
-        </div>
-      
+      </div>
+
     </>
   )
 }
