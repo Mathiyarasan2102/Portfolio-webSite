@@ -3,7 +3,7 @@ import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaJava, FaSe
 import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens } from "react-icons/si";
 
 const coreStack = [
-    { name: "JavaScript", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
+    { name: "JavaScript (ES6+)", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
     { name: "React.js", icon: <FaReact size={40} color="#61DAFB" />, level: "Proficient" },
     { name: "Node.js", icon: <FaNodeJs size={40} color="#339933" />, level: "Comfortable" },
     { name: "Express.js", icon: <SiExpress size={40} color="#000000" />, level: "Comfortable" },
