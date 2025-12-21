@@ -18,10 +18,7 @@ export default function About() {
         return () => observer.disconnect();
     }, []);
 
-    const handleDownloadResume = () => {
-        const driveLink = "https://drive.google.com/file/d/1i2Tmapludo521oUzmB70wnR1JDBDpnqF/view?usp=sharing";
-        window.open(driveLink, "_blank");
-    };
+
 
 
     const items = [
@@ -127,9 +124,13 @@ export default function About() {
                                     ))}
                                 </div>
                                 <div className="flex flex-wrap gap-4 transition-all duration-1000 delay-1100">
-                                    <button onClick={handleDownloadResume} className="bg-green-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105">
+                                    <a
+                                        href="/Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                                        download="Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                                        className="bg-green-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105"
+                                    >
                                         Download CV
-                                    </button>
+                                    </a>
                                     <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="border-2 border-slate-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:border-green-600 hover:text-green-400 transition-all duration-300 font-medium hover:scale-105">
                                         Contact Me
                                     </button>
