@@ -49,7 +49,7 @@ export default function About() {
                             <div className={`relative transition-all duration-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                                 <div className="relative group ">
                                     <div className="w-full max-w-md mx-auto">
-                                        <div className="relative border-4 border-green-500 rounded-2xl p-2 group-hover:border-green-400 transition-all duration-300">
+                                        <div className="relative border-2 sm:border-4 border-green-500 rounded-2xl p-2 group-hover:border-green-400 transition-all duration-300">
                                             <img src={img} alt="Aboutimage"
                                                 className="w-full rounded-xl transition-all duration-500 group-hover:scale-105"
                                             />
@@ -85,36 +85,54 @@ export default function About() {
                                 </div>
                                 <div className="space-y-6 text-gray-300 leading-relaxed">
                                     <p className={`text-lg transition-all duration-100 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
-                                        I am a junior web developer skilled in the MERN stack (MongoDB, Express.js, React.js, Node.js). I build responsive, full-stack web apps with clean, scalable code and love contributing to collaborative teams.
+                                        I am a junior MERN Stack Developer skilled in building
+                                        responsive, full-stack web applications.
                                     </p>
-                                    <p className={` transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}> I’ve worked on projects like an QuickChat Real time Chat App using MERN Stack, a Weather app using the OpenWeather API, the Nostra e-commerce landing page, and a TripAdvisor clone focusing on modern UI/UX, performance, and mobile responsiveness. </p>
+                                    <p className={` transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
+                                        I focus on clean architecture, scalability, and
+                                        collaborative team development.
+                                    </p>
 
                                     {/* How I Work Section */}
                                     <div className={`mt-6 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"} transition-all duration-1000 delay-900`}>
-                                        <h3 className="text-xl font-bold text-white mb-3">How I Work</h3>
-                                        <ul className="list-disc list-inside space-y-2 text-gray-300">
-                                            <li>I break real-world problems into scalable features</li>
-                                            <li>I focus on clean, reusable, and maintainable code</li>
-                                            <li>I enjoy debugging, refactoring, and improving existing systems</li>
-                                            <li>I collaborate well and adapt quickly in team environments</li>
+                                        <h3 className="text-xl font-bold text-white mb-4">How I Work</h3>
+                                        <ul className="space-y-4 text-gray-300">
+                                            <li className="flex items-start gap-3">
+                                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>
+                                                I break real-world problems into scalable features
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>
+                                                I focus on clean, reusable, and maintainable code
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>
+                                                I enjoy debugging, refactoring, and improving existing systems
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>
+                                                I collaborate well and adapt quickly in team environments
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div className={`grid grid-cols-2 gap-4 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
+                                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
                                     {items.map((item, index) => (
                                         <div key={index} className="group">
                                             <p className="text-white font-semibold group-hover:text-green-400 transition-all duration-300">
                                                 {item.label}
                                             </p>
-                                            <p className="text-gray-300">{item.value}</p>
+                                            <p className="text-gray-300 break-all sm:break-words">{item.value}</p>
                                         </div>
                                     ))}
                                 </div>
                                 <div className="flex flex-wrap gap-4 transition-all duration-1000 delay-1100">
                                     <button onClick={handleDownloadResume} className="bg-green-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105">
-                                        Download
+                                        Download CV
                                     </button>
-                                    <button onClick={() => window.open("https://linkedin.com/in/mathiyarasan-p", "_blank")} className="border-2 border-slate-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:border-green-600 hover:text-green-400 transition-all duration-300 font-medium hover:scale-105">Learn More</button>
+                                    <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="border-2 border-slate-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:border-green-600 hover:text-green-400 transition-all duration-300 font-medium hover:scale-105">
+                                        Contact Me
+                                    </button>
                                 </div>
                             </div>
                         </div>

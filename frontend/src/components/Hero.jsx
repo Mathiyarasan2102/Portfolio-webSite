@@ -2,7 +2,7 @@
 import { ArrowRight, GithubIcon, LinkedinIcon, InstagramIcon, Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import img from "../assets/img.jpg";
+import img from "../assets/hero-img.webp";
 
 const socials = [
   { href: "https://github.com/Mathiyarasan2102", Icon: GithubIcon },
@@ -39,13 +39,22 @@ export default function Hero() {
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             <div className="flex-col items-center lg:items-start px-4 sm:px-8 md:px-12 lg:px-16 space-y-4">
               <p
-                className={`text-green-400 font-semibold text-base sm:text-lg md:text-xl transition-all duration-1000 ${isVisible
+                className={`text-green-400 font-medium text-sm tracking-wide bg-green-400/10 px-3 py-1 rounded-full inline-block mb-4 transition-all duration-1000 ${isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
                   }`}
               >
                 Get Ready to Start Work
               </p>
+
+              <h2
+                className={`text-white text-lg sm:text-xl md:text-2xl font-semibold transition-all duration-1000 delay-100 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
+              >
+                Hi, I'm Mathiyarasan P 👋
+              </h2>
 
               <h1
                 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight transition-all duration-1000 delay-200 ${isVisible
@@ -108,6 +117,22 @@ export default function Hero() {
                 </button>
               </div>
 
+              {/* Trust Signal */}
+              <div
+                className={`flex items-center gap-2 mt-6 transition-all duration-1000 delay-700 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
+              >
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <p className="text-gray-400 text-sm font-medium">
+                  Open to full-time & internship roles
+                </p>
+              </div>
+
               {/* Social Icons */}
               <div
                 className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 sm:pt-6 transition-all duration-100 delay-800 ${isVisible
@@ -137,12 +162,12 @@ export default function Hero() {
               : "opacity-0 translate-y-10"
               }`}
           >
-            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
-              <div className="relative group">
+            <div className="relative w-56 sm:w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto scale-90">
+              <div className="relative group animate-float">
                 <img
                   src={img}
                   alt=""
-                  className="w-full rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl transition-all duration-500 group-hover:scale-105"
+                  className="w-full rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl transition-all duration-500 group-hover:scale-105 opacity-90 lg:opacity-100"
                 />
               </div>
 
