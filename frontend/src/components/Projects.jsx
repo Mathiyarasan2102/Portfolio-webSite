@@ -37,7 +37,7 @@ export default function Projects() {
             responsibility: "Full Stack Development",
             techChallenge: "Handling concurrent socket connections and real-time state synchronization.",
             image: p7,
-            technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "JWT"],
+            technologies: ["React.js","JavaScript (ES6+)", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app"
         },
@@ -50,7 +50,7 @@ export default function Projects() {
             responsibility: "Frontend Development",
             techChallenge: "Efficiently managing asynchronous API state and error handling.",
             image: p1,
-            technologies: ["React", "Tailwind CSS", "OpenWeather API"],
+            technologies: ["React.js", "JavaScript (ES6+)", "Tailwind CSS", "OpenWeather API"],
             git: "https://github.com/Mathiyarasan2102/Weather-App",
             live: "https://weather-app-seven-eta-19.vercel.app/"
         },
@@ -63,7 +63,7 @@ export default function Projects() {
             responsibility: "Frontend & Integration",
             techChallenge: "Optimizing Firestore reads/writes for real-time responsiveness.",
             image: p2,
-            technologies: ["React", "Tailwind CSS", "Firebase"],
+            technologies: ["React.js", "JavaScript (ES6+)", "Tailwind CSS" ],
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/"
         },
@@ -75,7 +75,7 @@ export default function Projects() {
             title: "Netflix Login Interface",
             description: "Responsive login interface with validation and seamless navigation.",
             image: p8,
-            technologies: ["React", "Tailwind CSS"],
+            technologies: ["React.js", "JavaScript (ES6+)", "Tailwind CSS", "Express.js", "Node.js"],
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
             live: "https://netflix-login-page-2rgp.vercel.app/"
         },
@@ -84,7 +84,7 @@ export default function Projects() {
             title: "Apple Homepage Clone",
             description: "High-fidelity replica of Apple's landing page featuring smooth animations.",
             image: p3,
-            technologies: ["React", "Tailwind CSS"],
+            technologies: ["React.js", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
             live: "https://clone-apple-lilac.vercel.app/"
         },
@@ -93,7 +93,7 @@ export default function Projects() {
             title: "Smart Form Validation",
             description: "Dynamic form with instant input validation and character counting logic.",
             image: p9,
-            technologies: ["HTML5", "CSS3", "JavaScript"],
+            technologies: ["HTML5", "CSS3", "JavaScript (ES6+)"],
             git: "https://github.com/Mathiyarasan2102/form-validation",
             live: "https://mathiyarasan2102.github.io/form-validation/"
         },
@@ -102,7 +102,7 @@ export default function Projects() {
             title: "Nostra E-Commerce",
             description: "Responsive e-commerce landing page optimized for mobile conversions.",
             image: p4,
-            technologies: ["HTML", "CSS", "JavaScript"],
+            technologies: ["HTML5", "CSS3", "JavaScript (ES6+)"],
             git: "https://github.com/Mathiyarasan2102/Nostra-Project",
             live: "https://mathiyarasan2102.github.io/Nostra-Project/"
         },
