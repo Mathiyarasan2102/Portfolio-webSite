@@ -174,7 +174,7 @@ export default function Contact() {
                                     <label className="block text-start text-sm font-semibold text-gray-300 mb-1 sm:mb-2 group-hover:text-green-400 transition-all duration-300">
                                         Message
                                     </label>
-                                    <textarea id='message' name='message' className="w-full min-h-[100px] sm:min-h-[120px] bg-slate-800 border border-slate-700 rounded-lg px-3 sm:px-4 text-white placeholder:p-2 sm:placeholder:p-3 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 hover:border-green-500/50" placeholder='Message' required />
+                                    <textarea id='message' name='message' className="w-full min-h-[100px] sm:min-h-[120px] bg-slate-800 border border-slate-700 rounded-lg py-3 px-3 sm:px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 hover:border-green-500/50" placeholder='Message' required />
                                 </div>
 
                                 <button

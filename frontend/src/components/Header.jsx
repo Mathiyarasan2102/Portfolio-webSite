@@ -28,10 +28,7 @@ export default function Header() {
         setIsMenuOpen(false)
     };
 
-    const handleDownloadResume = () => {
-        const driveLink = "https://drive.google.com/file/d/1i2Tmapludo521oUzmB70wnR1JDBDpnqF/view?usp=sharing"; 
-        window.open(driveLink, "_blank");
-    };
+
 
 
 
@@ -73,12 +70,13 @@ export default function Header() {
                         </nav>
 
                         {/* Desktop Resume Btn */}
-                        <button
-                            onClick={handleDownloadResume}
+                        <a
+                            href="/Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                            download="Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
                             className="hidden md:flex cursor-pointer items-center gap-2 bg-green-600 text-white px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 text-sm sm:text-base"
                         >
                             Download CV Now
-                        </button>
+                        </a>
 
                         {/* Mobile Menu Toggle */}
                         <button
@@ -102,11 +100,13 @@ export default function Header() {
                                     </button>
                                 ))
                             }
-                            <button onClick={handleDownloadResume}
+                            <a
+                                href="/Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                                download="Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
                                 className="mt-3 cursor-pointer sm:mt-4 w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 sm:px-6 py-2.5 rounded-lg hover:bg-green-700 transition-all duration-300 text-sm sm:text-base"
                             >
                                 Download CV Now
-                            </button>
+                            </a>
                         </nav>
                     )}
                 </div>
