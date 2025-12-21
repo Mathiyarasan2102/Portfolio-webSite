@@ -9,16 +9,23 @@ import Skills from './components/Skills'
 import SystemThinking from './components/SystemThinking'
 
 
+import { Toaster } from 'react-hot-toast';
+
 function App() {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <div className='bg-gray-900'>
         <Header />
         <Hero />
+        <div className="section-divider"></div>
         <About />
+        <div className="section-divider"></div>
         <Skills />
+        <div className="section-divider"></div>
         <Projects />
+        <div className="section-divider"></div>
         <SystemThinking />
         <Contact />
         <Footer />

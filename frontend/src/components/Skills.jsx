@@ -28,16 +28,16 @@ const fundamentals = [
 
 const education = [
     {
-        year: "2018-2021",
-        title: "Diploma in Computer Science Engineering",
-        institution: "Mother Terasa Polytechnic College - Pudukkottai",
-        description: "Built a strong foundation in programming, computer systems, and problem-solving skills."
-    },
-    {
         year: "2022-2025",
         title: "B.E Computer Science Engineering",
         institution: "Mother Terasa College Engineering and Technology - Pudukkottai",
-        description: "Expanded expertise in software development, algorithms, and advanced computing concepts."
+        description: "Focused on software development, algorithms, databases, and building scalable web applications."
+    },
+    {
+        year: "2018-2021",
+        title: "Diploma in Computer Science Engineering",
+        institution: "Mother Terasa Polytechnic College - Pudukkottai",
+        description: "Built strong fundamentals in programming, data structures, computer systems, and logical problem-solving."
     }
 ];
 
@@ -100,8 +100,8 @@ export default function Skills() {
                             ))}
                         </div>
 
-                        {/* Programming Fundamentals moved to Left */}
-                        <div>
+                        {/* Programming Fundamentals - Desktop Only (Hidden on mobile) */}
+                        <div className="hidden lg:block">
                             <div className="mb-8">
                                 <p className="text-3xl sm:text-4xl font-black text-white">Programming Fundamentals</p>
                             </div>
@@ -157,6 +157,25 @@ export default function Skills() {
                                         <div className="mb-3">{tool.icon}</div>
                                         <span className="text-white font-bold text-base">{tool.name}</span>
                                         <span className="text-blue-400 text-xs mt-1 uppercase tracking-wider font-semibold">{tool.level}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Programming Fundamentals - Mobile Only (Visible below Tools on mobile) */}
+                        <div className="lg:hidden">
+                            <div className="mb-8">
+                                <p className="text-3xl sm:text-4xl font-black text-white">Programming Fundamentals</p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                {fundamentals.map((lang, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-orange-600/20 hover:-translate-y-2 transition duration-300 border border-white/10"
+                                    >
+                                        <div className="mb-3">{lang.icon}</div>
+                                        <span className="text-white font-bold text-base">{lang.name}</span>
+                                        <span className="text-orange-400 text-xs mt-1 uppercase tracking-wider font-semibold">{lang.level}</span>
                                     </div>
                                 ))}
                             </div>

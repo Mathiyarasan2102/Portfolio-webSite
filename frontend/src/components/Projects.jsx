@@ -13,6 +13,7 @@ import p9 from '../assets/prjImg/p9.png'
 
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
+    const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -214,13 +215,13 @@ export default function Projects() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {otherProjects.map((project, index) => (
+                    {(showAll ? otherProjects : otherProjects.slice(0, 3)).map((project, index) => (
                         <div
                             key={index}
-                            className={`group bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                            className={`group bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 animate-fadeInUp ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                             style={{ transitionDelay: `${(index + featuredProjects.length) * 100}ms` }}
                         >
-                            <div className="p-5">
+                            <div className="p-4">
                                 <div className="flex justify-between items-start mb-4">
                                     <h4 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
                                         {project.title}
@@ -243,6 +244,15 @@ export default function Projects() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                <div className="mt-12 text-center">
+                    <button
+                        onClick={() => setShowAll(!showAll)}
+                        className="px-6 py-2 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-green-500 transition-all text-sm font-medium"
+                    >
+                        {showAll ? 'Show Less' : 'View More Projects'}
+                    </button>
                 </div>
             </div>
         </section>

@@ -1,6 +1,8 @@
 import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import toast from 'react-hot-toast';
+
 export default function Contact() {
     const [sending, setSending] = useState(false);
     const [sent, setSent] = useState(false);
@@ -34,6 +36,7 @@ export default function Contact() {
         e.preventDefault();
         setSending(true);
         setSent(false);
+        const loadingToast = toast.loading("Sending message...");
 
         const formData = new FormData(e.target);
         const payload = {
@@ -44,22 +47,31 @@ export default function Contact() {
         };
 
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/send-email`, {
+            const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+            const res = await fetch(`${apiUrl}/send-email`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
 
-            const data = await res.json();
-            if (data.success) {
+            let data;
+            try {
+                data = await res.json();
+            } catch (parseError) {
+                data = { success: false, message: "Server error occurred" };
+            }
+
+            toast.dismiss(loadingToast);
+            if (res.ok && data.success) {
                 setSent(true);
-                alert("✅ Message sent successfully!");
+                toast.success("Message sent successfully!");
                 e.target.reset();
             } else {
-                alert("❌ Failed to send message!");
+                toast.error(data.message || "Failed to send message!");
             }
         } catch (err) {
-            alert("⚠️ Error: " + err.message);
+            toast.dismiss(loadingToast);
+            toast.error("Error: " + err.message);
         } finally {
             setSending(false);
         }
