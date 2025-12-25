@@ -44,7 +44,7 @@ export default function Hero() {
                   : "opacity-0 translate-y-10"
                   }`}
               >
-                Get Ready to Start Work
+                Available for Immediate Joining
               </p>
 
               <h2
@@ -109,7 +109,7 @@ export default function Hero() {
                 <button
                   onClick={() =>
                   (window.location.href =
-                    "mailto:mathiarasan.2102@gmail.com?subject=Regarding Job Opportunity - Junior Web Developer&body=Hello Mathiyarasan,%0D%0A%0D%0AI came across your portfolio and would like to discuss a potential job opportunity with you.%0D%0A%0D%0ARegards,%0D%0A[Your Name]")
+                    "mailto:mathiarasan.2102@gmail.com?subject=Inquiry: Full Stack Developer Opportunity&body=Hi Mathiyarasan,%0D%0A%0D%0AI reviewed your portfolio and was impressed by your work in MERN stack development. We have an opportunity that seems like a great fit for your skillset.%0D%0A%0D%0AI would love to schedule a brief call to discuss this further.%0D%0A%0D%0ABest regards,%0D%0A[Your Name]")
                   }
                   className="border-2 border-slate-600 text-white px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg hover:border-green-600 hover:text-green-400 transition-all duration-300 font-medium flex items-center gap-2 group hover:scale-105 text-sm sm:text-base"
                 >

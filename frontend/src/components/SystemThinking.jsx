@@ -28,7 +28,7 @@ export default function SystemThinking() {
         <section ref={sectionRef} className="py-20 bg-slate-900 border-t border-slate-800">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-4xl text-center">
                 <h2 className={`text-3xl md:text-4xl font-bold text-white mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                    How I Build Applications
+                    My Engineering Approach
                 </h2>
                 <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 text-left transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                     {systems.map((item, index) => (

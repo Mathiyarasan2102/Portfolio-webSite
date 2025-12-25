@@ -1,5 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import p1 from '../assets/prjImg/p1.png'
 import p2 from '../assets/prjImg/p2.png'
@@ -14,6 +14,20 @@ import p9 from '../assets/prjImg/p9.png'
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
     const [showAll, setShowAll] = useState(false);
+    const newProjectsRef = useRef(null);
+
+    useEffect(() => {
+        if (showAll && newProjectsRef.current) {
+            if (window.innerWidth < 768) {
+                setTimeout(() => {
+                    const yOffset = -100; // Adjustment for header/spacing
+                    const element = newProjectsRef.current;
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, [showAll]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -37,7 +51,7 @@ export default function Projects() {
             responsibility: "Full Stack Development",
             techChallenge: "Handling concurrent socket connections and real-time state synchronization.",
             image: p7,
-            technologies: ["React.js","JavaScript (ES6+)", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
+            technologies: ["React.js", "JavaScript", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app"
         },
@@ -50,7 +64,7 @@ export default function Projects() {
             responsibility: "Frontend Development",
             techChallenge: "Efficiently managing asynchronous API state and error handling.",
             image: p1,
-            technologies: ["React.js", "JavaScript (ES6+)", "Tailwind CSS", "OpenWeather API"],
+            technologies: ["React.js", "JavaScript", "Tailwind CSS", "OpenWeather API"],
             git: "https://github.com/Mathiyarasan2102/Weather-App",
             live: "https://weather-app-seven-eta-19.vercel.app/"
         },
@@ -63,7 +77,7 @@ export default function Projects() {
             responsibility: "Frontend & Integration",
             techChallenge: "Optimizing Firestore reads/writes for real-time responsiveness.",
             image: p2,
-            technologies: ["React.js", "JavaScript (ES6+)", "Tailwind CSS" ],
+            technologies: ["React.js", "JavaScript", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/"
         },
@@ -75,7 +89,7 @@ export default function Projects() {
             title: "Netflix Login Interface",
             description: "Responsive login interface with validation and seamless navigation.",
             image: p8,
-            technologies: ["React.js", "JavaScript (ES6+)", "Tailwind CSS", "Express.js", "Node.js"],
+            technologies: ["React.js", "JavaScript", "Tailwind CSS", "Express.js", "Node.js"],
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
             live: "https://netflix-login-page-2rgp.vercel.app/"
         },
@@ -93,7 +107,7 @@ export default function Projects() {
             title: "Smart Form Validation",
             description: "Dynamic form with instant input validation and character counting logic.",
             image: p9,
-            technologies: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+            technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/form-validation",
             live: "https://mathiyarasan2102.github.io/form-validation/"
         },
@@ -102,7 +116,7 @@ export default function Projects() {
             title: "Nostra E-Commerce",
             description: "Responsive e-commerce landing page optimized for mobile conversions.",
             image: p4,
-            technologies: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+            technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/Nostra-Project",
             live: "https://mathiyarasan2102.github.io/Nostra-Project/"
         },
@@ -159,15 +173,15 @@ export default function Projects() {
                                     alt={project.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                                 />
-                                <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                <div className="absolute top-3 right-3 flex gap-2 transition-all duration-300">
                                     <a href={project.git} target="_blank" rel="noopener noreferrer">
-                                        <button className="w-8 h-8 bg-white/90 rounded-full border-green-300 border flex items-center justify-center hover:bg-white transition-all duration-300">
-                                            <Github className="w-4 h-4 text-green-500" />
+                                        <button className="w-8 h-8 bg-transparent rounded-full border border-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn">
+                                            <Github className="w-4 h-4 text-green-400 group-hover/btn:text-white" />
                                         </button>
                                     </a>
                                     <a href={project.live} target="_blank" rel="noopener noreferrer">
-                                        <button className="w-8 h-8 bg-white/90 border-green-300 border rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
-                                            <ExternalLink className="w-6 h-5 text-green-500" />
+                                        <button className="w-8 h-8 bg-transparent border border-green-500 rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn">
+                                            <ExternalLink className="w-5 h-5 text-green-400 group-hover/btn:text-white" />
                                         </button>
                                     </a>
                                 </div>
@@ -218,8 +232,12 @@ export default function Projects() {
                     {(showAll ? otherProjects : otherProjects.slice(0, 3)).map((project, index) => (
                         <div
                             key={index}
+                            ref={index === 3 ? newProjectsRef : null}
                             className={`group bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 animate-fadeInUp ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                            style={{ transitionDelay: `${(index + featuredProjects.length) * 100}ms` }}
+                            style={{
+                                transitionDelay: `${index < 3 ? (index + featuredProjects.length) * 100 : (index - 3) * 150}ms`,
+                                animationDelay: `${index < 3 ? (index + featuredProjects.length) * 100 : (index - 3) * 150}ms`
+                            }}
                         >
                             <div className="p-4">
                                 <div className="flex justify-between items-start mb-4">
