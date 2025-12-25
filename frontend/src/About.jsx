@@ -23,7 +23,7 @@ export default function About() {
 
     const items = [
         { label: "Name", value: "Mathiyarasan.P" },
-        { label: "Place", value: "Trichy" },
+        { label: "Place", value: "Chennai, Tamil Nadu" },
         { label: "Degree", value: "B.E Computer Science Engineering" },
         { label: "Email", value: "mathiyarasan.2102@gmail.com" },
     ];
@@ -82,7 +82,7 @@ export default function About() {
                                 </div>
                                 <div className="space-y-6 text-gray-300 leading-relaxed">
                                     <p className={`text-lg transition-all duration-100 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
-                                        I am a junior MERN Stack Developer skilled in building
+                                        I am a passionate MERN Stack Developer skilled in building
                                         responsive, full-stack web applications.
                                     </p>
                                     <p className={` transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>

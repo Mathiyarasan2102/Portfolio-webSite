@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaJava, FaServer } from "react-icons/fa";
-import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens } from "react-icons/si";
+import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens, SiRedux } from "react-icons/si";
 
 const coreStack = [
-    { name: "JavaScript (ES6+)", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
+    { name: "JavaScript", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
     { name: "React.js", icon: <FaReact size={40} color="#61DAFB" />, level: "Proficient" },
+    { name: "Redux", icon: <SiRedux size={40} color="#764ABC" />, level: "Proficient" },
     { name: "Node.js", icon: <FaNodeJs size={40} color="#339933" />, level: "Comfortable" },
     { name: "Express.js", icon: <SiExpress size={40} color="#000000" />, level: "Comfortable" },
     { name: "MongoDB", icon: <SiMongodb size={40} color="#47A248" />, level: "Comfortable" },

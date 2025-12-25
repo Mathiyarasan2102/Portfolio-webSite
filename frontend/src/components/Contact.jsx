@@ -108,7 +108,7 @@ export default function Contact() {
                         <div className="space-y-4">
                             {[{ icon: Mail, title: "Email", info: "mathiarasan.2102@gmail.com", link: "mailto:mathiarasan.2102@gmail.com" },
                             { icon: Phone, title: "Phone", info: "+91 7558105547", link: "tel:+917558105547" },
-                            { icon: MapPin, title: "Location", info: "Trichy, Tamil Nadu", link: null }]
+                            { icon: MapPin, title: "Location", info: "Chennai, Tamil Nadu", link: null }]
                                 .map((contact, index) => (
                                     <a
                                         key={index}
