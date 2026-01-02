@@ -125,8 +125,8 @@ export default function About() {
                                 </div>
                                 <div className="flex flex-wrap gap-4 transition-all duration-1000 delay-1100">
                                     <a
-                                        href="/Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
-                                        download="Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                                        href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                                        download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
                                         className="bg-green-600 cursor-pointer text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105"
                                     >
                                         Download CV

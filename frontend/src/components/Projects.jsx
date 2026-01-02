@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Play, X } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
 import p1 from '../assets/prjImg/p1.png'
@@ -10,10 +10,22 @@ import p6 from '../assets/prjImg/p6.png'
 import p7 from '../assets/prjImg/prj7 - Copy.png'
 import p8 from '../assets/prjImg/p8.png'
 import p9 from '../assets/prjImg/p9.png'
+import novamart from '../assets/prjImg/novamart.png'
+import novamartVideo from '../assets/prjVideo/novamart.mp4'
+import quickChatVideo from '../assets/prjVideo/quickchat.mp4'
+import weatherVideo from '../assets/prjVideo/weather.mp4'
+import listTaskVideo from '../assets/prjVideo/listtask.mp4'
+import netflixVideo from '../assets/prjVideo/netflix.mp4'
+import appleVideo from '../assets/prjVideo/apple.mp4'
+import formVideo from '../assets/prjVideo/form.mp4'
+import nostraVideo from '../assets/prjVideo/nostra.mp4'
+import greendenVideo from '../assets/prjVideo/greenden.mp4'
+import udemyVideo from '../assets/prjVideo/udemy.mp4'
 
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
     const [showAll, setShowAll] = useState(false);
+    const [activeVideo, setActiveVideo] = useState(null);
     const newProjectsRef = useRef(null);
 
     useEffect(() => {
@@ -43,8 +55,23 @@ export default function Projects() {
 
     const featuredProjects = [
         {
+            id: 10,
+            title: "NovaMart - Full Stack E-commerce",
+            type: "Full Stack E-commerce Platform",
+            description: "Built a scalable e-commerce application featuring a comprehensive admin dashboard for dynamic product and order management.",
+            problem: "Need for a scalable e-commerce platform with dynamic management capabilities.",
+            responsibility: "Full Stack Development",
+            techChallenge: "Integrating PayPal for real-time transactions and optimizing UI with Cloudinary.",
+            image: novamart,
+            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Cloudinary", "PayPal"],
+            git: "https://github.com/Mathiyarasan2102/novamart-mern-ecommerce",
+            live: "https://novamart-mern-ecommerce.vercel.app",
+            demo: novamartVideo,
+            isLocalVideo: true
+        },
+        {
             id: 7,
-            title: "QuickChat Realtime App",
+            title: "QuickChat Realtime Messaging App",
             type: "MERN Chat Application",
             description: "Built a real-time messaging platform to facilitate instant communication using the MERN stack and Socket.io, with a focus on low-latency updates and secure authentication.",
             problem: "Users require instant, reliable messaging without page refreshes.",
@@ -53,7 +80,9 @@ export default function Projects() {
             image: p7,
             technologies: ["React.js", "JavaScript", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
-            live: "https://quick-chat-app-puce.vercel.app"
+            live: "https://quick-chat-app-puce.vercel.app",
+            demo: quickChatVideo,
+            isLocalVideo: true
         },
         {
             id: 1,
@@ -66,24 +95,24 @@ export default function Projects() {
             image: p1,
             technologies: ["React.js", "JavaScript", "Tailwind CSS", "OpenWeather API"],
             git: "https://github.com/Mathiyarasan2102/Weather-App",
-            live: "https://weather-app-seven-eta-19.vercel.app/"
-        },
-        {
-            id: 2,
-            title: "Task Management App",
-            type: "Productivity Tool",
-            description: "Built a collaborative task manager to streamline team productivity using React and Firebase, with a focus on real-time updates and intuitive UI.",
-            problem: "Teams struggle to track tasks efficiently in real-time.",
-            responsibility: "Frontend & Integration",
-            techChallenge: "Optimizing Firestore reads/writes for real-time responsiveness.",
-            image: p2,
-            technologies: ["React.js", "JavaScript", "Tailwind CSS"],
-            git: "https://github.com/Mathiyarasan2102/Task-Management-App",
-            live: "https://task-management-app-omega-smoky.vercel.app/"
+            live: "https://weather-app-seven-eta-19.vercel.app/",
+            demo: weatherVideo,
+            isLocalVideo: true
         },
     ];
 
     const otherProjects = [
+        {
+            id: 2,
+            title: "ListTask - Task Manager",
+            description: "Smart task organizer featuring drag-and-drop, priority tagging, and local storage persistence.",
+            image: p2,
+            technologies: ["React.js", "JavaScript", "Tailwind CSS"],
+            git: "https://github.com/Mathiyarasan2102/Task-Management-App",
+            live: "https://task-management-app-omega-smoky.vercel.app/",
+            demo: listTaskVideo,
+            isLocalVideo: true
+        },
         {
             id: 8,
             title: "Netflix Login Interface",
@@ -91,7 +120,9 @@ export default function Projects() {
             image: p8,
             technologies: ["React.js", "JavaScript", "Tailwind CSS", "Express.js", "Node.js"],
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
-            live: "https://netflix-login-page-2rgp.vercel.app/"
+            live: "https://netflix-login-page-2rgp.vercel.app/",
+            demo: netflixVideo,
+            isLocalVideo: true
         },
         {
             id: 3,
@@ -100,7 +131,9 @@ export default function Projects() {
             image: p3,
             technologies: ["React.js", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
-            live: "https://clone-apple-lilac.vercel.app/"
+            live: "https://clone-apple-lilac.vercel.app/",
+            demo: appleVideo,
+            isLocalVideo: true
         },
         {
             id: 9,
@@ -109,7 +142,9 @@ export default function Projects() {
             image: p9,
             technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/form-validation",
-            live: "https://mathiyarasan2102.github.io/form-validation/"
+            live: "https://mathiyarasan2102.github.io/form-validation/",
+            demo: formVideo,
+            isLocalVideo: true
         },
         {
             id: 4,
@@ -118,7 +153,9 @@ export default function Projects() {
             image: p4,
             technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/Nostra-Project",
-            live: "https://mathiyarasan2102.github.io/Nostra-Project/"
+            live: "https://mathiyarasan2102.github.io/Nostra-Project/",
+            demo: nostraVideo,
+            isLocalVideo: true
         },
         {
             id: 5,
@@ -127,7 +164,9 @@ export default function Projects() {
             image: p5,
             technologies: ["HTML5", "CSS3"],
             git: "https://github.com/Mathiyarasan2102/Greenden-Project",
-            live: "https://mathiyarasan2102.github.io/Greenden-Project/"
+            live: "https://mathiyarasan2102.github.io/Greenden-Project/",
+            demo: greendenVideo,
+            isLocalVideo: true
         },
         {
             id: 6,
@@ -136,7 +175,9 @@ export default function Projects() {
             image: p6,
             technologies: ["HTML5", "CSS3"],
             git: "https://github.com/Mathiyarasan2102/Udemy-clone-website",
-            live: "https://mathiyarasan2102.github.io/Udemy-clone-website/"
+            live: "https://mathiyarasan2102.github.io/Udemy-clone-website/",
+            demo: udemyVideo,
+            isLocalVideo: true
         }
     ];
 
@@ -167,20 +208,42 @@ export default function Projects() {
                             className={`flex flex-col bg-slate-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-500 overflow-hidden border border-slate-700 hover:border-green-500 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                             style={{ transitionDelay: `${index * 150}ms` }}
                         >
-                            <div className="relative overflow-hidden h-56 flex-shrink-0">
+                            <div className="relative overflow-hidden aspect-video flex-shrink-0">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-300"
                                 />
-                                <div className="absolute top-3 right-3 flex gap-2 transition-all duration-300">
+                                {/* Video Hint Overlay */}
+                                <div
+                                    className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px] cursor-pointer z-10"
+                                    onClick={() => setActiveVideo(project.demo || null)}
+                                >
+                                    <div className="bg-slate-900/80 px-4 py-2 rounded-full border border-green-500/50 flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-green-600 hover:border-green-400">
+                                        <Play size={16} className="text-green-400 fill-green-400 group-hover:text-white group-hover:fill-white transition-colors" />
+                                        <span className="text-white text-sm font-medium">View Project Video</span>
+                                    </div>
+                                </div>
+                                <div className="absolute top-3 right-3 flex gap-2 transition-all duration-300 z-20">
+                                    {project.demo && (
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setActiveVideo(project.demo);
+                                            }}
+                                            className="w-8 h-8 bg-transparent rounded-full border border-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn md:hidden"
+                                            title="Watch Demo"
+                                        >
+                                            <Play className="w-4 h-4 text-green-400 group-hover/btn:text-white fill-current" />
+                                        </button>
+                                    )}
                                     <a href={project.git} target="_blank" rel="noopener noreferrer">
-                                        <button className="w-8 h-8 bg-transparent rounded-full border border-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn">
+                                        <button className="w-8 h-8 bg-transparent rounded-full border border-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn" title="View Code">
                                             <Github className="w-4 h-4 text-green-400 group-hover/btn:text-white" />
                                         </button>
                                     </a>
                                     <a href={project.live} target="_blank" rel="noopener noreferrer">
-                                        <button className="w-8 h-8 bg-transparent border border-green-500 rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn">
+                                        <button className="w-8 h-8 bg-transparent border border-green-500 rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn" title="Live Demo">
                                             <ExternalLink className="w-5 h-5 text-green-400 group-hover/btn:text-white" />
                                         </button>
                                     </a>
@@ -233,7 +296,7 @@ export default function Projects() {
                         <div
                             key={index}
                             ref={index === 3 ? newProjectsRef : null}
-                            className={`group bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 animate-fadeInUp ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                            className={`group relative bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 animate-fadeInUp ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                             style={{
                                 transitionDelay: `${index < 3 ? (index + featuredProjects.length) * 100 : (index - 3) * 150}ms`,
                                 animationDelay: `${index < 3 ? (index + featuredProjects.length) * 100 : (index - 3) * 150}ms`
@@ -245,8 +308,20 @@ export default function Projects() {
                                         {project.title}
                                     </h4>
                                     <div className="flex gap-2">
-                                        <a href={project.git} target="_blank" className="text-gray-400 hover:text-white"><Github size={16} /></a>
-                                        <a href={project.live} target="_blank" className="text-gray-400 hover:text-white"><ExternalLink size={16} /></a>
+                                        {project.demo && (
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setActiveVideo(project.demo);
+                                                }}
+                                                className="text-gray-400 cursor-pointer hover:text-green-400 transition-colors"
+                                                title="View Demo"
+                                            >
+                                                <Play size={16} />
+                                            </button>
+                                        )}
+                                        <a href={project.git} target="_blank" className="text-gray-400 hover:text-white" title="View Code"><Github size={16} /></a>
+                                        <a href={project.live} target="_blank" className="text-gray-400 hover:text-white" title="Live Demo"><ExternalLink size={16} /></a>
                                     </div>
                                 </div>
                                 <p className="text-gray-400 text-sm mb-4 line-clamp-2">
@@ -259,6 +334,7 @@ export default function Projects() {
                                         </span>
                                     ))}
                                 </div>
+                                {/* Video Hint Badge Removed from here to fix overlap */}
                             </div>
                         </div>
                     ))}
@@ -273,6 +349,55 @@ export default function Projects() {
                     </button>
                 </div>
             </div>
-        </section>
+
+            {/* Video Modal */}
+            {
+                activeVideo && (
+                    <div
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-8 animate-fadeIn"
+                        onClick={() => setActiveVideo(null)}
+                    >
+                        <div
+                            className="relative w-full max-w-5xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <div className="flex justify-between items-center p-4 border-b border-slate-700 bg-slate-900/50">
+                                <h3 className="text-white font-semibold flex items-center gap-2">
+                                    <Play size={18} className="text-green-400 fill-green-400" />
+                                    Project Demo
+                                </h3>
+                                <button
+                                    onClick={() => setActiveVideo(null)}
+                                    className="text-gray-400 hover:text-white hover:bg-red-500/20 p-2 rounded-full transition-all"
+                                >
+                                    <X size={20} />
+                                </button>
+                            </div>
+                            <div className="relative pt-[56.25%] bg-black">
+                                {(typeof activeVideo === 'string' && (activeVideo.includes('youtube.com') || activeVideo.includes('vimeo.com'))) ? (
+                                    <iframe
+                                        className="absolute inset-0 w-full h-full"
+                                        src={activeVideo}
+                                        title="Project Demo"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                ) : (
+                                    <video
+                                        className="absolute inset-0 w-full h-full"
+                                        controls
+                                        autoPlay
+                                        src={activeVideo}
+                                    >
+                                        Your browser does not support the video tag.
+                                    </video>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        </section >
     );
 }

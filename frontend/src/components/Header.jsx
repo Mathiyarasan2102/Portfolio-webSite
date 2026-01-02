@@ -35,6 +35,7 @@ export default function Header() {
     const navItems = [
         { name: "Home", href: "#home" },
         { name: "About", href: "#about" },
+        { name: "Experience", href: "#experience" },
         { name: "Skills", href: "#skills" },
         { name: "Projects", href: "#projects" },
         { name: "Contact", href: "#contact" }
@@ -71,8 +72,8 @@ export default function Header() {
 
                         {/* Desktop Resume Btn */}
                         <a
-                            href="/Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
-                            download="Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                            href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                            download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
                             className="hidden md:flex cursor-pointer items-center gap-2 bg-green-600 text-white px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 text-sm sm:text-base"
                         >
                             Download CV Now
@@ -101,8 +102,8 @@ export default function Header() {
                                 ))
                             }
                             <a
-                                href="/Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
-                                download="Mathiyarasan_P_Full_Stack_MERN_Developer.pdf"
+                                href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                                download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
                                 className="mt-3 cursor-pointer sm:mt-4 w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 sm:px-6 py-2.5 rounded-lg hover:bg-green-700 transition-all duration-300 text-sm sm:text-base"
                             >
                                 Download CV Now

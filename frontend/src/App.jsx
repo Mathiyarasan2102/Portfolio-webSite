@@ -2,6 +2,7 @@ import About from './About'
 import './App.css'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Experience from './components/Experience'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
@@ -21,6 +22,8 @@ function App() {
         <Hero />
         <div className="section-divider"></div>
         <About />
+        <div className="section-divider"></div>
+        <Experience />
         <div className="section-divider"></div>
         <Skills />
         <div className="section-divider"></div>

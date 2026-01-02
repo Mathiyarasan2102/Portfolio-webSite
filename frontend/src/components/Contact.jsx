@@ -5,7 +5,6 @@ import toast from 'react-hot-toast';
 
 export default function Contact() {
     const [sending, setSending] = useState(false);
-    const [sent, setSent] = useState(false);
 
     const socials = [
         { href: "https://github.com/Mathiyarasan2102", Icon: Github },
@@ -35,7 +34,6 @@ export default function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSending(true);
-        setSent(false);
         const loadingToast = toast.loading("Sending message...");
 
         const formData = new FormData(e.target);
@@ -57,13 +55,12 @@ export default function Contact() {
             let data;
             try {
                 data = await res.json();
-            } catch (parseError) {
+            } catch {
                 data = { success: false, message: "Server error occurred" };
             }
 
             toast.dismiss(loadingToast);
             if (res.ok && data.success) {
-                setSent(true);
                 toast.success("Message sent successfully!");
                 e.target.reset();
             } else {
@@ -133,9 +130,9 @@ export default function Contact() {
                         <h4 className="text-base sm:text-lg font-semibold text-white mt-6 sm:mt-8">Follow Me</h4>
 
                         <div className={`flex gap-3 sm:gap-4 pt-4 sm:pt-6 transition-all text-white duration-100 delay-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                            {socials.map(({ href, Icon }, index) => (
+                            {socials.map(({ href, Icon: SocialIcon }, index) => (
                                 <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={baseClasses}>
-                                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                                    <SocialIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </a>
                             ))}
                         </div>
