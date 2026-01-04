@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaJava, FaServer } from "react-icons/fa";
-import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens, SiRedux } from "react-icons/si";
+import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens, SiRedux, SiVite } from "react-icons/si";
 
 const coreStack = [
     { name: "JavaScript", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
@@ -15,6 +15,7 @@ const coreStack = [
 ];
 
 const backendTools = [
+    { name: "Vite", icon: <SiVite size={40} color="#646CFF" />, level: "Proficient" },
     { name: "REST APIs", icon: <FaServer size={40} color="#2563EB" />, level: "Proficient" },
     { name: "JWT Auth", icon: <SiJsonwebtokens size={40} color="#D63AFF" />, level: "Comfortable" },
     { name: "Socket.io", icon: <SiSocketdotio size={40} color="#010101" />, level: "Familiar" },

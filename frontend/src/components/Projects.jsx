@@ -1,26 +1,26 @@
 import { ExternalLink, Github, Play, X } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
-import p1 from '../assets/prjImg/p1.png'
-import p2 from '../assets/prjImg/p2.png'
-import p3 from '../assets/prjImg/p3.png'
-import p4 from '../assets/prjImg/p4.png'
-import p5 from '../assets/prjImg/p5.png'
-import p6 from '../assets/prjImg/p6.png'
-import p7 from '../assets/prjImg/prj7 - Copy.png'
-import p8 from '../assets/prjImg/p8.png'
-import p9 from '../assets/prjImg/p9.png'
+import weatherAppImg from '../assets/prjImg/weatherApp.png'
+import taskManagerImg from '../assets/prjImg/taskManager.png'
+import appleCloneImg from '../assets/prjImg/appleClone.png'
+import nostraImg from '../assets/prjImg/nostra.png'
+import greendenImg from '../assets/prjImg/greenden.png'
+import udemyCloneImg from '../assets/prjImg/udemyClone.png'
+import quickChatImg from '../assets/prjImg/quickChat.png'
+import netflixLoginImg from '../assets/prjImg/netflixLogin.png'
+import formValidationImg from '../assets/prjImg/formValidation.png'
 import novamart from '../assets/prjImg/novamart.png'
-import novamartVideo from '../assets/prjVideo/novamart.mp4'
-import quickChatVideo from '../assets/prjVideo/quickchat.mp4'
-import weatherVideo from '../assets/prjVideo/weather.mp4'
-import listTaskVideo from '../assets/prjVideo/listtask.mp4'
-import netflixVideo from '../assets/prjVideo/netflix.mp4'
-import appleVideo from '../assets/prjVideo/apple.mp4'
-import formVideo from '../assets/prjVideo/form.mp4'
-import nostraVideo from '../assets/prjVideo/nostra.mp4'
-import greendenVideo from '../assets/prjVideo/greenden.mp4'
-import udemyVideo from '../assets/prjVideo/udemy.mp4'
+
+
+
+
+
+
+
+
+
+
 
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
@@ -66,8 +66,8 @@ export default function Projects() {
             technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Cloudinary", "PayPal"],
             git: "https://github.com/Mathiyarasan2102/novamart-mern-ecommerce",
             live: "https://novamart-mern-ecommerce.vercel.app",
-            demo: novamartVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube.com/embed/bIQz0PakTH4?si=VG5X-iWfb-CuJJlU",
+
         },
         {
             id: 7,
@@ -77,12 +77,12 @@ export default function Projects() {
             problem: "Users require instant, reliable messaging without page refreshes.",
             responsibility: "Full Stack Development",
             techChallenge: "Handling concurrent socket connections and real-time state synchronization.",
-            image: p7,
+            image: quickChatImg,
             technologies: ["React.js", "JavaScript", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app",
-            demo: quickChatVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube.com/embed/KH4CRY7E8m4?si=7jX2340mvXYgPPPF",
+
         },
         {
             id: 1,
@@ -92,12 +92,12 @@ export default function Projects() {
             problem: "Need for accurate, real-time weather data visualization across devices.",
             responsibility: "Frontend Development",
             techChallenge: "Efficiently managing asynchronous API state and error handling.",
-            image: p1,
+            image: weatherAppImg,
             technologies: ["React.js", "JavaScript", "Tailwind CSS", "OpenWeather API"],
             git: "https://github.com/Mathiyarasan2102/Weather-App",
             live: "https://weather-app-seven-eta-19.vercel.app/",
-            demo: weatherVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube.com/embed/dHqgUSAjn60?si=VOxuhkBOdXxsituW",
+
         },
     ];
 
@@ -106,78 +106,78 @@ export default function Projects() {
             id: 2,
             title: "ListTask - Task Manager",
             description: "Smart task organizer featuring drag-and-drop, priority tagging, and local storage persistence.",
-            image: p2,
+            image: taskManagerImg,
             technologies: ["React.js", "JavaScript", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/",
-            demo: listTaskVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube.com/embed/tet4gafprag?si=8qrK7ZEal9p2YOxt",
+
         },
         {
             id: 8,
             title: "Netflix Login Interface",
             description: "Responsive login interface with validation and seamless navigation.",
-            image: p8,
+            image: netflixLoginImg,
             technologies: ["React.js", "JavaScript", "Tailwind CSS", "Express.js", "Node.js"],
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
             live: "https://netflix-login-page-2rgp.vercel.app/",
-            demo: netflixVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube-nocookie.com/embed/UxYR7gF87yQ?si=ry8VH90s7h9RvvXC",
+
         },
         {
             id: 3,
             title: "Apple Homepage Clone",
             description: "High-fidelity replica of Apple's landing page featuring smooth animations.",
-            image: p3,
+            image: appleCloneImg,
             technologies: ["React.js", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
             live: "https://clone-apple-lilac.vercel.app/",
-            demo: appleVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube.com/embed/eJ9K_drN-Xc?si=SYZ9ZmNlYFFTpUkX",
+
         },
         {
             id: 9,
             title: "Smart Form Validation",
             description: "Dynamic form with instant input validation and character counting logic.",
-            image: p9,
+            image: formValidationImg,
             technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/form-validation",
             live: "https://mathiyarasan2102.github.io/form-validation/",
-            demo: formVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube-nocookie.com/embed/fN5to190Zuk?si=zICW_cr0WXm51bqV",
+
         },
         {
             id: 4,
             title: "Nostra E-Commerce",
             description: "Responsive e-commerce landing page optimized for mobile conversions.",
-            image: p4,
+            image: nostraImg,
             technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/Nostra-Project",
             live: "https://mathiyarasan2102.github.io/Nostra-Project/",
-            demo: nostraVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube-nocookie.com/embed/UVRiVqJVw5k?si=TUbct6bQFYOcjfW3",
+
         },
         {
             id: 5,
             title: "Greenden Plants",
             description: "Modern e-commerce showcase for plant products with clean design.",
-            image: p5,
+            image: greendenImg,
             technologies: ["HTML5", "CSS3"],
             git: "https://github.com/Mathiyarasan2102/Greenden-Project",
             live: "https://mathiyarasan2102.github.io/Greenden-Project/",
-            demo: greendenVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube-nocookie.com/embed/kBw3d4t_GR0?si=TLMTWFsWF0wqgoD8",
+
         },
         {
             id: 6,
             title: "Udemy Clone",
             description: "Instructional platform UI replica with course listing structure.",
-            image: p6,
+            image: udemyCloneImg,
             technologies: ["HTML5", "CSS3"],
             git: "https://github.com/Mathiyarasan2102/Udemy-clone-website",
             live: "https://mathiyarasan2102.github.io/Udemy-clone-website/",
-            demo: udemyVideo,
-            isLocalVideo: true
+            demo: "https://www.youtube.com/embed/zwjqUuRTe74?si=7_JPuZ7kXXhr21no",
+
         }
     ];
 
@@ -374,25 +374,17 @@ export default function Projects() {
                                 </button>
                             </div>
                             <div className="relative pt-[56.25%] bg-black">
-                                {(typeof activeVideo === 'string' && (activeVideo.includes('youtube.com') || activeVideo.includes('vimeo.com'))) ? (
-                                    <iframe
-                                        className="absolute inset-0 w-full h-full"
-                                        src={activeVideo}
-                                        title="Project Demo"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
-                                ) : (
-                                    <video
-                                        className="absolute inset-0 w-full h-full"
-                                        controls
-                                        autoPlay
-                                        src={activeVideo}
-                                    >
-                                        Your browser does not support the video tag.
-                                    </video>
-                                )}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="w-10 h-10 border-4 border-slate-700 border-t-green-500 rounded-full animate-spin"></div>
+                                </div>
+                                <iframe
+                                    className="absolute inset-0 w-full h-full z-10"
+                                    src={activeVideo}
+                                    title="Project Demo"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
                             </div>
                         </div>
                     </div>
