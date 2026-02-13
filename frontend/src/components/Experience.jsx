@@ -32,7 +32,7 @@ const Experience = () => {
             role: "MERN Stack Developer Intern",
             company: "Least Action Company Pvt. Ltd.",
             location: "Remote",
-            period: "Oct 2025 – Present",
+            period: "Oct 2025 – Jan 2026",
             description: [
                 "Developed LuxeEstate, a production-ready real estate platform with Role-Based Access Control (RBAC) ensuring secure access for Admin, Seller, and User roles.",
                 "Designed and optimized MongoDB schemas to efficiently manage complex relationships between users, property listings, and bookings.",

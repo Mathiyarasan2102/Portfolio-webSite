@@ -1,6 +1,5 @@
 import { ExternalLink, Github, Play, X } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
-
 import weatherAppImg from '../assets/prjImg/weatherApp.png'
 import taskManagerImg from '../assets/prjImg/taskManager.png'
 import appleCloneImg from '../assets/prjImg/appleClone.png'
@@ -11,16 +10,7 @@ import quickChatImg from '../assets/prjImg/quickChat.png'
 import netflixLoginImg from '../assets/prjImg/netflixLogin.png'
 import formValidationImg from '../assets/prjImg/formValidation.png'
 import novamart from '../assets/prjImg/novamart.png'
-
-
-
-
-
-
-
-
-
-
+import lumoraImg from '../assets/prjImg/lumora.png'
 
 export default function Projects() {
     const [isVisible, setIsVisible] = useState(false);
@@ -55,6 +45,21 @@ export default function Projects() {
 
     const featuredProjects = [
         {
+            id: 11,
+            isInternship: true,
+            title: "Lumora Photography",
+            type: "Premium Studio Management Platform",
+            description: "A comprehensive photography portfolio system with a cinematic frontend and robust admin dashboard. Engineered a premium UX with Lenis smooth scrolling and Framer Motion animations.",
+            problem: "Professional studios need a unique, high-performance platform to showcase portfolios and manage bookings seamlessly.",
+            responsibility: "Full Stack Development (Internship)",
+            techChallenge: "Implementing secure JWT auth for admin panels and real-time automated email notifications.",
+            image: lumoraImg,
+            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Framer Motion", "Cloudinary"],
+            git: "https://github.com/Mathiyarasan2102/lumora-photography-cms",
+            live: "https://lumora-photography-cms.vercel.app/",
+            demo: "https://www.youtube.com/embed/4ZtH75DaCUo?si=fLB8dsmm2q6mGJMd&autoplay=1",
+        },
+        {
             id: 10,
             title: "NovaMart - Full Stack E-commerce",
             type: "Full Stack E-commerce Platform",
@@ -66,7 +71,7 @@ export default function Projects() {
             technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Cloudinary", "PayPal"],
             git: "https://github.com/Mathiyarasan2102/novamart-mern-ecommerce",
             live: "https://novamart-mern-ecommerce.vercel.app",
-            demo: "https://www.youtube.com/embed/bIQz0PakTH4?si=VG5X-iWfb-CuJJlU",
+            demo: "https://www.youtube.com/embed/bIQz0PakTH4?autoplay=1",
 
         },
         {
@@ -81,7 +86,7 @@ export default function Projects() {
             technologies: ["React.js", "JavaScript", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app",
-            demo: "https://www.youtube.com/embed/KH4CRY7E8m4?si=7jX2340mvXYgPPPF",
+            demo: "https://www.youtube.com/embed/KH4CRY7E8m4?autoplay=1",
 
         },
         {
@@ -96,7 +101,7 @@ export default function Projects() {
             technologies: ["React.js", "JavaScript", "Tailwind CSS", "OpenWeather API"],
             git: "https://github.com/Mathiyarasan2102/Weather-App",
             live: "https://weather-app-seven-eta-19.vercel.app/",
-            demo: "https://www.youtube.com/embed/dHqgUSAjn60?si=VOxuhkBOdXxsituW",
+            demo: "https://www.youtube.com/embed/dHqgUSAjn60?autoplay=1",
 
         },
     ];
@@ -110,7 +115,7 @@ export default function Projects() {
             technologies: ["React.js", "JavaScript", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/",
-            demo: "https://www.youtube.com/embed/tet4gafprag?si=8qrK7ZEal9p2YOxt",
+            demo: "https://www.youtube.com/embed/tet4gafprag?autoplay=1",
 
         },
         {
@@ -121,7 +126,7 @@ export default function Projects() {
             technologies: ["React.js", "JavaScript", "Tailwind CSS", "Express.js", "Node.js"],
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
             live: "https://netflix-login-page-2rgp.vercel.app/",
-            demo: "https://www.youtube-nocookie.com/embed/UxYR7gF87yQ?si=ry8VH90s7h9RvvXC",
+            demo: "https://www.youtube.com/embed/UxYR7gF87yQ?autoplay=1",
 
         },
         {
@@ -132,7 +137,7 @@ export default function Projects() {
             technologies: ["React.js", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
             live: "https://clone-apple-lilac.vercel.app/",
-            demo: "https://www.youtube.com/embed/eJ9K_drN-Xc?si=SYZ9ZmNlYFFTpUkX",
+            demo: "https://www.youtube.com/embed/eJ9K_drN-Xc?autoplay=1",
 
         },
         {
@@ -143,7 +148,7 @@ export default function Projects() {
             technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/form-validation",
             live: "https://mathiyarasan2102.github.io/form-validation/",
-            demo: "https://www.youtube-nocookie.com/embed/fN5to190Zuk?si=zICW_cr0WXm51bqV",
+            demo: "https://www.youtube.com/embed/fN5to190Zuk?autoplay=1",
 
         },
         {
@@ -154,7 +159,7 @@ export default function Projects() {
             technologies: ["HTML5", "CSS3", "JavaScript"],
             git: "https://github.com/Mathiyarasan2102/Nostra-Project",
             live: "https://mathiyarasan2102.github.io/Nostra-Project/",
-            demo: "https://www.youtube-nocookie.com/embed/UVRiVqJVw5k?si=TUbct6bQFYOcjfW3",
+            demo: "https://www.youtube.com/embed/UVRiVqJVw5k?autoplay=1",
 
         },
         {
@@ -165,7 +170,7 @@ export default function Projects() {
             technologies: ["HTML5", "CSS3"],
             git: "https://github.com/Mathiyarasan2102/Greenden-Project",
             live: "https://mathiyarasan2102.github.io/Greenden-Project/",
-            demo: "https://www.youtube-nocookie.com/embed/kBw3d4t_GR0?si=TLMTWFsWF0wqgoD8",
+            demo: "https://www.youtube.com/embed/kBw3d4t_GR0?autoplay=1",
 
         },
         {
@@ -176,7 +181,7 @@ export default function Projects() {
             technologies: ["HTML5", "CSS3"],
             git: "https://github.com/Mathiyarasan2102/Udemy-clone-website",
             live: "https://mathiyarasan2102.github.io/Udemy-clone-website/",
-            demo: "https://www.youtube.com/embed/zwjqUuRTe74?si=7_JPuZ7kXXhr21no",
+            demo: "https://www.youtube.com/embed/zwjqUuRTe74?autoplay=1",
 
         }
     ];
@@ -251,7 +256,12 @@ export default function Projects() {
                             </div>
 
                             <div className="p-6 flex flex-col flex-grow">
-                                <div className="flex items-center justify-between mb-3">
+                                <div className="flex flex-wrap items-center gap-2 mb-3">
+                                    {project.isInternship && (
+                                        <span className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide border border-blue-500/20">
+                                            Internship
+                                        </span>
+                                    )}
                                     <span className="bg-green-900/30 text-green-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
                                         {project.type}
                                     </span>

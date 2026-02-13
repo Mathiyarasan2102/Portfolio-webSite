@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaJava, FaServer } from "react-icons/fa";
-import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens, SiRedux, SiVite } from "react-icons/si";
+import { SiJavascript, SiMongodb, SiExpress, SiTailwindcss, SiPython, SiSocketdotio, SiJsonwebtokens, SiRedux, SiVite, SiMysql } from "react-icons/si";
 
 const coreStack = [
     { name: "JavaScript", icon: <SiJavascript size={40} color="#E5C100" />, level: "Proficient" },
@@ -21,6 +21,7 @@ const backendTools = [
     { name: "Socket.io", icon: <SiSocketdotio size={40} color="#010101" />, level: "Familiar" },
     { name: "Git", icon: <FaGitAlt size={40} color="#F05032" />, level: "Proficient" },
     { name: "GitHub", icon: <FaGithub size={40} color="#181717" />, level: "Proficient" },
+    { name: "MySQL", icon: <SiMysql size={40} color="#00758F" />, level: "Familiar" },
 ];
 
 const fundamentals = [
