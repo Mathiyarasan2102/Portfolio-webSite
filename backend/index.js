@@ -2,6 +2,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -74,6 +75,43 @@ app.post("/send-email", async (req, res) => {
         return res.status(500).json({ success: false, message: error.message });
     }
 });
+
+app.post("/notify-visit", async (req, res) => {
+    try {
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            return res.json({ success: false, message: 'Email config not found, skipping notification.' });
+        }
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
+            subject: '🚀 New Visitor Alert - Portfolio!',
+            text: 'Good news! Someone has just opened your Portfolio website.'
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error sending email:', error);
+            } else {
+                console.log('Visit Notification Sent: ' + info.response);
+            }
+        });
+
+        res.json({ success: true, message: 'Notification attempt logged' });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: 'Notification failed' });
+    }
+});
+
 
 const PORT = process.env.PORT || 5000; // fallback 5000
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

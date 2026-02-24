@@ -11,8 +11,24 @@ import SystemThinking from './components/SystemThinking'
 
 
 import { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    // Check if the user has already visited the site in this session/browser
+    const hasVisited = localStorage.getItem('hasVisitedPortfolio');
+
+    if (!hasVisited) {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      // Send the notify request without blocking anything
+      fetch(`${apiUrl}/notify-visit`, { method: 'POST' })
+        .then(() => {
+          localStorage.setItem('hasVisitedPortfolio', 'true');
+        })
+        .catch(err => console.log('Notification failed:', err));
+    }
+  }, []);
 
   return (
     <>
