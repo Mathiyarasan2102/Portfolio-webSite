@@ -78,35 +78,33 @@ app.post("/send-email", async (req, res) => {
 
 app.post("/notify-visit", async (req, res) => {
     try {
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            return res.json({ success: false, message: 'Email config not found, skipping notification.' });
-        }
-
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
-            subject: '🚀 New Visitor Alert - Portfolio!',
-            text: 'Good news! Someone has just opened your Portfolio website.'
+        const payload = {
+            service_id: process.env.EMAILJS_SERVICE_ID,
+            template_id: process.env.EMAILJS_TEMPLATE_ID,
+            user_id: process.env.EMAILJS_PUBLIC_KEY,
+            accessToken: process.env.EMAILJS_PRIVATE_KEY,
+            template_params: {
+                name: "Portfolio Tracker",
+                email: "noreply@portfolio.com",
+                subject: "🚀 New Visitor Alert - Portfolio!",
+                message: "Good news! Someone has just opened your Portfolio website.",
+            },
         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log('Error sending email:', error);
-            } else {
-                console.log('Visit Notification Sent: ' + info.response);
-            }
+        const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
         });
 
-        // We respond immediately so we don't slow down the user's initial load time
-        res.json({ success: true, message: 'Notification attempt logged' });
+        if (response.ok) {
+            console.log('Visit Notification Sent via EmailJS');
+            return res.json({ success: true, message: 'Notification attempt logged' });
+        } else {
+            const errText = await response.text();
+            console.log('EmailJS failed:', errText);
+            return res.json({ success: false, message: 'Notification failed' });
+        }
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: 'Notification failed' });
