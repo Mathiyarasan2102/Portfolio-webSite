@@ -83,7 +83,7 @@ export default function About() {
                             </div>
 
                             <div className="pt-10 flex flex-col sm:flex-row gap-6">
-                                <a href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf" download className="primary-button py-4 px-10 inline-flex justify-center text-xs tracking-super-wide">
+                                <a href="/Mathiyarasan_P_Full_Stack_Developer.pdf" download className="primary-button py-4 px-10 inline-flex justify-center text-xs tracking-super-wide">
                                     Download Resume
                                 </a>
                                 <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} className="luxury-button py-4 px-10 inline-flex justify-center text-xs tracking-super-wide">

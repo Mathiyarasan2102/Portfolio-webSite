@@ -68,8 +68,8 @@ export default function Header() {
                     <motion.a
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
-                        download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                        href="/Mathiyarasan_P_Full_Stack_Developer.pdf"
+                        download="Mathiyarasan_P_Full_Stack_Developer.pdf"
                         className="hidden md:inline-flex luxury-button px-6 py-2.5 text-xxs tracking-super-wide cursor-pointer"
                     >
                         RESUME
@@ -100,8 +100,8 @@ export default function Header() {
                                 </button>
                             ))}
                             <a
-                                href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
-                                download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                                href="/Mathiyarasan_P_Full_Stack_Developer.pdf"
+                                download="Mathiyarasan_P_Full_Stack_Developer.pdf"
                                 className="luxury-button px-6 py-4 mt-6 w-full text-center cursor-pointer text-xs tracking-super-wide"
                             >
                                 DOWNLOAD RESUME
