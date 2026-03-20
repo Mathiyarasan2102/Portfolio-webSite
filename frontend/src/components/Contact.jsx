@@ -1,6 +1,6 @@
-import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Send } from 'lucide-react';
-import { useEffect, useState } from 'react';
-
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function Contact() {
@@ -12,29 +12,10 @@ export default function Contact() {
         { href: "https://www.instagram.com/itz_mathi_king/", Icon: Instagram }
     ];
 
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.intersectionRatio) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.3 }
-        );
-        const element = document.getElementById("contact");
-        if (element) observer.observe(element);
-        return () => observer.disconnect();
-    }, []);
-
-    const baseClasses =
-        "w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 rounded-lg flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300 group hover:scale-110 hover:rotate-6";
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSending(true);
-        const loadingToast = toast.loading("Sending message...");
+        const loadingToast = toast.loading("Executing payload...");
 
         const formData = new FormData(e.target);
         const payload = {
@@ -56,15 +37,15 @@ export default function Contact() {
             try {
                 data = await res.json();
             } catch {
-                data = { success: false, message: "Server error occurred" };
+                data = { success: false, message: "Critical server error" };
             }
 
             toast.dismiss(loadingToast);
             if (res.ok && data.success) {
-                toast.success("Message sent successfully!");
+                toast.success("Payload delivered successfully.");
                 e.target.reset();
             } else {
-                toast.error(data.message || "Failed to send message!");
+                toast.error(data.message || "Failed delivery.");
             }
         } catch (err) {
             toast.dismiss(loadingToast);
@@ -75,116 +56,117 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="min-h-screen flex items-center py-16 sm:py-20 md:py-24 bg-slate-800 relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0">
-                <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-green-600/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-transparent via-green-600/5 to-transparent"></div>
-            </div>
+        <section id="contact" className="py-24 bg-brand-dark-surface border-t border-brand-dark-border relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-6xl relative z-10">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 lg:mb-24 flex flex-col items-center text-center"
+                >
+                    <span className="font-sans text-xxs text-gray-500 tracking-super-wide uppercase mb-6 block">
+                        Contact
+                    </span>
+                    <h2 className="display-heading text-5xl lg:text-7xl font-bold text-brand-light leading-none tracking-tight">
+                        Get In Touch
+                    </h2>
+                </motion.div>
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-                {/* Heading */}
-                <div className={`text-center mb-10 sm:mb-14 md:mb-16 transition-all duration-1000 -mt-5 sm:-mt-10 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                    <p className="text-green-400 font-semibold text-base sm:text-lg mb-3 sm:mb-4">Get in Touch</p>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">Let's work Together</h2>
-                    <p className="text-gray-300 text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto px-2">
-                        Have a project in mind? I'd love to hear about it. Let's discuss how we can bring your ideas to life.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+                    
                     {/* Left - Contact Info */}
-                    <div className={`space-y-6 sm:space-y-8 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Contact Information</h3>
-                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-                            I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-                        </p>
-
-                        <div className="space-y-4">
-                            {[{ icon: Mail, title: "Email", info: "mathiarasan.2102@gmail.com", link: "mailto:mathiarasan.2102@gmail.com" },
-                            { icon: Phone, title: "Phone", info: "+91 7558105547", link: "tel:+917558105547" },
-                            { icon: MapPin, title: "Location", info: "Chennai, Tamil Nadu", link: null }]
-                                .map((contact, index) => (
-                                    <a
-                                        key={index}
-                                        href={contact.link || undefined}
-                                        className={`flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-slate-900 rounded-lg hover:bg-slate-700 transition-all duration-300 border border-slate-700 hover:border-green-500 group cursor-pointer transform hover:scale-105 ${!contact.link ? 'cursor-default hover:scale-100' : ''}`}
-                                    >
-                                        <div className="w-9 h-9 sm:w-10 sm:h-10 bg-green-600 rounded-lg flex items-center justify-center group-hover:bg-green-500 transition-all duration-300">
-                                            <contact.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <div className="lg:col-span-4">
+                        <motion.div 
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-12"
+                        >
+                            <div className="space-y-8">
+                                {[
+                                    { icon: Mail, title: "Email", info: "mathiarasan.2102@gmail.com", link: "mailto:mathiarasan.2102@gmail.com" },
+                                    { icon: Phone, title: "Phone", info: "+91 7558105547", link: "tel:+917558105547" },
+                                    { icon: MapPin, title: "Location", info: "Trichy, Tamil Nadu", link: null }
+                                ].map((contact, index) => (
+                                    <div key={index} className="flex items-start gap-6 group">
+                                        <div className="w-12 h-12 border border-brand-dark-border bg-brand-dark flex items-center justify-center group-hover:border-brand-accent group-hover:text-brand-accent transition-colors duration-500 rounded-full">
+                                            <contact.icon size={18} className={contact.link ? "text-gray-400 group-hover:text-brand-accent" : "text-gray-500"} strokeWidth={1.5} />
                                         </div>
-                                        <div>
-                                            <p className="font-semibold text-white text-sm sm:text-base group-hover:text-gray-400 transition-all duration-300">
+                                        <div className="pt-1">
+                                            <p className="font-sans text-xxs text-brand-muted uppercase tracking-super-wide block mb-2">
                                                 {contact.title}
                                             </p>
-                                            <p className="text-gray-300 text-sm sm:text-base font-normal group-hover:text-gray-200 transition-all duration-300">
-                                                {contact.info}
-                                            </p>
+                                            {contact.link ? (
+                                                <a href={contact.link} className="font-sans font-light text-base text-brand-light hover:text-brand-accent transition-colors break-words">
+                                                    {contact.info}
+                                                </a>
+                                            ) : (
+                                                <p className="font-sans font-light text-base text-gray-400">
+                                                    {contact.info}
+                                                </p>
+                                            )}
                                         </div>
-                                    </a>
+                                    </div>
                                 ))}
-                        </div>
+                            </div>
 
-                        <h4 className="text-base sm:text-lg font-semibold text-white mt-6 sm:mt-8">Follow Me</h4>
-
-                        <div className={`flex gap-3 sm:gap-4 pt-4 sm:pt-6 transition-all text-white duration-100 delay-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                            {socials.map(({ href, Icon: SocialIcon }, index) => (
-                                <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={baseClasses}>
-                                    <SocialIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </a>
-                            ))}
-                        </div>
-
-
+                            <div>
+                                <p className="font-sans text-xxs text-brand-muted uppercase tracking-super-wide block mb-6">
+                                    Social Networks
+                                </p>
+                                <div className="flex gap-4">
+                                    {socials.map(({ href, Icon: SocialIcon }, index) => (
+                                        <a key={index} href={href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-brand-dark-border bg-brand-dark flex items-center justify-center text-gray-400 hover:border-brand-accent hover:text-brand-accent transition-all duration-500 rounded-full">
+                                            <SocialIcon size={18} strokeWidth={1.5} />
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
 
-                    {/* Contact Form */}
-                    <div className={`transition-all -mt-5 sm:-mt-10 duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                        <div className="bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition duration-300">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Send Message</h3>
-                            <form onSubmit={handleSubmit}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                                    <div className="group">
-                                        <label className="block text-start text-sm font-semibold text-gray-300 mb-1 sm:mb-2 group-hover:text-green-400 transition-all duration-300">
-                                            Full Name
-                                        </label>
-                                        <input type="text" id='name' name='name' className="w-full h-11 sm:h-12 bg-slate-800 border border-slate-700 rounded-lg px-3 sm:px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 hover:border-green-500/50" placeholder='Your name' required />
+                    {/* Right - Form */}
+                    <div className="lg:col-span-8">
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-brand-dark border border-brand-dark-border p-8 lg:p-12"
+                        >
+                            <form onSubmit={handleSubmit} className="space-y-8">
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <label className="font-sans text-xxs text-gray-500 uppercase tracking-super-wide block mb-3">Name</label>
+                                        <input type="text" id='name' name='name' className="w-full bg-brand-dark-surface border border-brand-dark-border px-5 py-4 font-sans font-light text-sm text-brand-light focus:outline-none focus:border-brand-accent transition-colors rounded-xs placeholder-gray-700" placeholder="John Doe" required />
                                     </div>
-                                    <div className="group">
-                                        <label className="block text-start text-sm font-semibold text-gray-300 mb-1 sm:mb-2 group-hover:text-green-400 transition-all duration-300">
-                                            Mail Id
-                                        </label>
-                                        <input type="email" id='email' name='email' className="w-full h-11 sm:h-12 bg-slate-800 border border-slate-700 rounded-lg px-3 sm:px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 hover:border-green-500/50" placeholder="Email Id" required />
+                                    <div>
+                                        <label className="font-sans text-xxs text-gray-500 uppercase tracking-super-wide block mb-3">Email</label>
+                                        <input type="email" id='email' name='email' className="w-full bg-brand-dark-surface border border-brand-dark-border px-5 py-4 font-sans font-light text-sm text-brand-light focus:outline-none focus:border-brand-accent transition-colors rounded-xs placeholder-gray-700" placeholder="john@example.com" required />
                                     </div>
                                 </div>
 
-                                <div className="group mt-4 sm:mt-5">
-                                    <label className="block text-start text-sm font-semibold text-gray-300 mb-1 sm:mb-2 group-hover:text-green-400 transition-all duration-300">
-                                        Subject
-                                    </label>
-                                    <input type="text" id='subject' name='subject' className="w-full h-11 sm:h-12 bg-slate-800 border border-slate-700 rounded-lg px-3 sm:px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 hover:border-green-500/50" placeholder='Subject' required />
+                                <div>
+                                    <label className="font-sans text-xxs text-gray-500 uppercase tracking-super-wide block mb-3">Subject</label>
+                                    <input type="text" id='subject' name='subject' className="w-full bg-brand-dark-surface border border-brand-dark-border px-5 py-4 font-sans font-light text-sm text-brand-light focus:outline-none focus:border-brand-accent transition-colors rounded-xs placeholder-gray-700" placeholder="Job Opportunity" required />
                                 </div>
 
-                                <div className="group mt-4 sm:mt-5">
-                                    <label className="block text-start text-sm font-semibold text-gray-300 mb-1 sm:mb-2 group-hover:text-green-400 transition-all duration-300">
-                                        Message
-                                    </label>
-                                    <textarea id='message' name='message' className="w-full min-h-[100px] sm:min-h-[120px] bg-slate-800 border border-slate-700 rounded-lg py-3 px-3 sm:px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 hover:border-green-500/50" placeholder='Message' required />
+                                <div>
+                                    <label className="font-sans text-xxs text-gray-500 uppercase tracking-super-wide block mb-3">Message</label>
+                                    <textarea id='message' name='message' className="w-full min-h-[160px] bg-brand-dark-surface border border-brand-dark-border px-5 py-4 font-sans font-light text-sm text-brand-light focus:outline-none focus:border-brand-accent transition-colors rounded-xs placeholder-gray-700 resize-y" placeholder="Hello Mathiyarasan..." required />
                                 </div>
 
                                 <button
                                     type="submit"
                                     disabled={sending}
-                                    className="mt-4 sm:mt-5 w-full h-12 sm:h-14 bg-green-600 text-white py-3 sm:py-4 rounded-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 shadow-xl hover:scale-105 group"
+                                    className="primary-button w-full py-5 text-xs tracking-super-wide flex items-center justify-between px-8"
                                 >
-                                    {sending ? "Sending..." : "Send Message"}
-                                    <Send className="w-4 h-4 sm:w-5 sm:h-5 transition-all group-hover:translate-x-1 group-hover:translate-y-1" />
+                                    <span>{sending ? "Sending..." : "Send Message"}</span>
+                                    <ArrowRight size={18} strokeWidth={1.5} />
                                 </button>
                             </form>
-                        </div>
+                        </motion.div>
                     </div>
+
                 </div>
             </div>
         </section>

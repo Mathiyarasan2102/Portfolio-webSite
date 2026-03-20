@@ -9,7 +9,6 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import SystemThinking from './components/SystemThinking'
 
-
 import { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 
@@ -33,23 +32,17 @@ function App() {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <div className='bg-gray-900'>
+      <div className='bg-brand-dark-surface min-h-screen text-white font-sans'>
         <Header />
         <Hero />
-        <div className="section-divider"></div>
         <About />
-        <div className="section-divider"></div>
         <Experience />
-        <div className="section-divider"></div>
         <Skills />
-        <div className="section-divider"></div>
         <Projects />
-        <div className="section-divider"></div>
         <SystemThinking />
         <Contact />
         <Footer />
       </div>
-
     </>
   )
 }

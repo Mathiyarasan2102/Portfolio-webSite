@@ -1,41 +1,56 @@
-import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function SystemThinking() {
-    const sectionRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setIsVisible(true);
-            },
-            { threshold: 0.2 }
-        );
-        if (sectionRef.current) observer.observe(sectionRef.current);
-        return () => observer.disconnect();
-    }, []);
-
     const systems = [
-        "RESTful API design",
-        "JWT-based authentication & authorization",
-        "Modular backend architecture",
-        "MongoDB schema design",
-        "Frontend state management",
-        "Deployment using Vercel / Render"
+        { id: "01", title: "RESTful Architecture", desc: "Designing stateless, cacheable, and uniform interfaces." },
+        { id: "02", title: "Zero-Trust Auth", desc: "Implementing strict JWT-based authorization boundaries." },
+        { id: "03", title: "Micro-Service Ready", desc: "Building modular backends prepared for horizontal scaling." },
+        { id: "04", title: "Optimized Schemas", desc: "Engineering MongoDB schemas for high-speed read/write performance." },
+        { id: "05", title: "State Predictability", desc: "Managing complex frontend data flows statefully." },
+        { id: "06", title: "CI/CD Deployment", desc: "Automating builds and shipping via Vercel and Render." }
     ];
 
     return (
-        <section ref={sectionRef} className="py-20 bg-slate-900 border-t border-slate-800">
-            <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-4xl text-center">
-                <h2 className={`text-3xl md:text-4xl font-bold text-white mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                    My Engineering Approach
-                </h2>
-                <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 text-left transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <section className="py-24 bg-brand-dark-surface border-t border-brand-dark-border overflow-hidden">
+            <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-16 lg:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
+                >
+                    <div>
+                        <span className="font-sans text-xxs text-gray-500 tracking-super-wide uppercase mb-6 block">
+                            Approach
+                        </span>
+                        <h2 className="display-heading text-5xl lg:text-7xl font-bold text-brand-light leading-[1.1] tracking-tight">
+                            Engineering<br /> Philosophy
+                        </h2>
+                    </div>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {systems.map((item, index) => (
-                        <div key={index} className="flex items-center gap-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-green-500/50 transition-colors">
-                            <span className="flex-shrink-0 w-3 h-3 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
-                            <span className="text-gray-200 font-medium text-lg">{item}</span>
-                        </div>
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            key={index} 
+                            className="bg-brand-dark border border-brand-dark-border p-10 group hover:border-brand-accent/40 transition-colors duration-500 relative"
+                        >
+                            <span className="absolute top-6 right-6 font-mono text-xxs tracking-widest text-[#1a1a1a] group-hover:text-brand-accent/50 transition-colors duration-500">
+                                {item.id}
+                            </span>
+                            <h3 className="font-display font-medium text-brand-light text-xl mb-4 mt-2 tracking-wide group-hover:text-brand-accent transition-colors duration-500">
+                                {item.title}
+                            </h3>
+                            <p className="font-sans font-light text-sm text-gray-500 leading-relaxed group-hover:text-gray-400 transition-colors duration-500">
+                                {item.desc}
+                            </p>
+                            <div className="absolute bottom-0 left-0 h-[2px] bg-brand-accent transition-all duration-700 w-0 group-hover:w-full opacity-50"></div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

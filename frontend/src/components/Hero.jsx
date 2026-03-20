@@ -1,180 +1,87 @@
-/* eslint-disable no-unused-vars */
-import { ArrowRight, GithubIcon, LinkedinIcon, InstagramIcon, Mail } from "lucide-react";
+import { ArrowRight, GithubIcon, LinkedinIcon, Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import img from "../assets/hero-img.webp";
+import { motion } from "framer-motion";
 
 const socials = [
-  { href: "https://github.com/Mathiyarasan2102", Icon: GithubIcon },
-  { href: "https://www.linkedin.com/in/mathiyarasan-p", Icon: LinkedinIcon },
-  { href: "https://wa.me/917558105547", Icon: FaWhatsapp },
-  { href: "https://www.instagram.com/itz_mathi_king/", Icon: InstagramIcon },
-  { href: "mailto:mathiarasan.2102@gmail.com", Icon: Mail },
+  { href: "https://github.com/Mathiyarasan2102", label: "Github", Icon: GithubIcon },
+  { href: "https://www.linkedin.com/in/mathiyarasan-p", label: "LinkedIn", Icon: LinkedinIcon },
+  { href: "https://wa.me/917558105547", label: "WhatsApp", Icon: FaWhatsapp },
+  { href: "mailto:mathiarasan.2102@gmail.com", label: "Email", Icon: Mail },
 ];
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const baseClasses =
-    "w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-slate-700 rounded-lg flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300 group hover:scale-110 hover:rotate-6";
-
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 to-slate-900 relative overflow-hidden"
-    >
-      {/* Background Blobs */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-40 sm:w-72 h-40 sm:h-72 bg-green-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-transparent via-green-600/5 to-transparent"></div>
+    <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-12 relative overflow-hidden bg-brand-dark">
+      
+      {/* Editorial Grid overlay (subtle) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-20">
+        <div className="absolute top-0 left-[20%] w-[1px] h-full bg-brand-dark-border"></div>
+        <div className="absolute top-0 right-[20%] w-[1px] h-full bg-brand-dark-border"></div>
+        <div className="absolute top-[50%] left-0 w-full h-[1px] bg-brand-dark-border"></div>
       </div>
+      
+      {/* Decorative large text background */}
+      <motion.p 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.03 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute top-20 left-0 w-full text-center text-[12vw] font-display font-black text-white leading-none z-0 select-none tracking-tighter"
+      >
+        PORTFOLIO
+      </motion.p>
 
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-16 sm:py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <div className="flex-col items-center lg:items-start px-4 sm:px-8 md:px-12 lg:px-16 space-y-4">
-              <p
-                className={`text-green-400 font-medium text-sm tracking-wide bg-green-400/10 px-3 py-1 rounded-full inline-block mb-4 transition-all duration-1000 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                Available for Immediate Joining
-              </p>
-
-              <h2
-                className={`text-white text-lg sm:text-xl md:text-2xl font-semibold transition-all duration-1000 delay-100 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                Hi, I'm Mathiyarasan P 👋
-              </h2>
-
-              <h1
-                className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight transition-all duration-1000 delay-200 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                Full Stack MERN{" "}
-                <span
-                  className={`text-green-400 ${isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                    }`}
-                >
-                  Developer
-                </span>
-                <br />
-                <span className="text-white text-xl sm:text-2xl md:text-3xl leading-snug block mt-4">
-                  building real-world, scalable web applications
-                </span>
-              </h1>
-
-              <p
-                className={`text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-md sm:max-w-lg mx-auto lg:mx-0 transition-all duration-1000 delay-500 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                I build full-stack MERN applications with clean architecture, secure authentication, real-time features, and a strong focus on performance and user experience.
-              </p>
-
-              {/* Buttons */}
-              <div
-                className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 transition-all duration-1000 delay-500 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                <button
-                  onClick={() =>
-                    window.open(
-                      "https://linkedin.com/in/mathiyarasan-p",
-                      "_blank"
-                    )
-                  }
-                  className="bg-green-600 text-white px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg hover:bg-green-700 transition-all duration-300 flex items-center gap-2 group shadow-lg hover:shadow-xl font-medium hover:scale-105 text-sm sm:text-base"
-                >
-                  Learn More{" "}
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
-                </button>
-
-                <button
-                  onClick={() =>
-                  (window.location.href =
-                    "mailto:mathiarasan.2102@gmail.com?subject=Inquiry: Full Stack Developer Opportunity&body=Hi Mathiyarasan,%0D%0A%0D%0AI reviewed your portfolio and was impressed by your work in MERN stack development. We have an opportunity that seems like a great fit for your skillset.%0D%0A%0D%0AI would love to schedule a brief call to discuss this further.%0D%0A%0D%0ABest regards,%0D%0A[Your Name]")
-                  }
-                  className="border-2 border-slate-600 text-white px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg hover:border-green-600 hover:text-green-400 transition-all duration-300 font-medium flex items-center gap-2 group hover:scale-105 text-sm sm:text-base"
-                >
-                  Hire Me
-                </button>
-              </div>
-
-              {/* Trust Signal */}
-              <div
-                className={`flex items-center gap-2 mt-6 transition-all duration-1000 delay-700 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                </span>
-                <p className="text-gray-400 text-sm font-medium">
-                  Open to full-time & internship roles
-                </p>
-              </div>
-
-              {/* Social Icons */}
-              <div
-                className={`flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-4 sm:pt-6 transition-all duration-100 delay-800 ${isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-                  }`}
-              >
-                {socials.map(({ href, Icon }, index) => (
-                  <a
-                    key={index}
-                    href={href}
-                    target={href.startsWith("mailto") ? undefined : "_blank"}
-                    rel="noopener noreferrer"
-                    className={baseClasses}
-                  >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Content */}
-          <div
-            className={`relative transition-all duration-1000 delay-300 ${isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-              }`}
+      <div className="container mx-auto px-6 lg:px-20 relative z-10 w-full mt-10">
+        <div className="max-w-7xl mx-auto flex flex-col items-start justify-center">
+            
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-4 mb-10 pb-4 border-b border-brand-dark-border w-full max-w-sm"
           >
-            <div className="relative w-56 sm:w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto scale-90">
-              <div className="relative group animate-float">
-                <img
-                  src={img}
-                  alt=""
-                  className="w-full rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl transition-all duration-500 group-hover:scale-105 opacity-90 lg:opacity-100"
-                />
-              </div>
+            <span className="w-1.5 h-1.5 bg-brand-accent rounded-full box-glow"></span>
+            <span className="font-sans text-xs tracking-widest text-gray-400 uppercase">Status: Available for Next Role</span>
+          </motion.div>
 
-              <div className="absolute -top-6 sm:-top-10 -right-3 sm:-right-4 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 bg-green-600 rounded-2xl opacity-20"></div>
-              <div className="absolute -bottom-3 sm:-bottom-4 -left-3 sm:-left-4 w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-blue-500 rounded-full opacity-20"></div>
+          <motion.div 
+             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+             className="relative w-full break-words"
+          >
+            <h1 className="display-heading text-[12vw] sm:text-[9vw] md:text-[8vw] lg:text-[7vw] xl:text-[6vw] leading-[0.95] text-brand-light tracking-tight">
+              Mathiyarasan P.<br/>
+              <span className="text-brand-muted italic font-light">Full-Stack</span> Software Engineer.
+            </h1>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2, delay: 0.4 }}
+            className="grid lg:grid-cols-12 gap-10 mt-16 w-full items-start"
+          >
+            <div className="lg:col-span-6 space-y-6">
+                <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                Specialized in <strong className="text-brand-light font-medium">MERN stack</strong> architectures. I craft robust backend systems and meticulous frontend interfaces that drive measurable impact, focusing on scalable performance and exceptional user experience.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                  <a href="#projects" className="primary-button px-8 py-4 text-center text-sm tracking-widest w-full sm:w-auto">
+                    View Portfolio
+                  </a>
+                  <a href="mailto:mathiarasan.2102@gmail.com" className="luxury-button px-8 py-4 text-center flex items-center justify-center gap-3 text-sm tracking-widest w-full sm:w-auto">
+                    Let's Connect <ArrowRight className="w-4 h-4 opacity-70" />
+                  </a>
+                </div>
             </div>
-          </div>
+            
+            <div className="lg:col-span-5 lg:col-start-8 flex flex-col justify-end h-full mt-10 lg:mt-0 pb-2 border-l border-brand-dark-border pl-8">
+               <span className="font-sans text-xxs text-[#666] tracking-super-wide mb-6 uppercase">Index / Contacts</span>
+               <div className="flex flex-col gap-5">
+                   {socials.map((s, idx) => (
+                      <a key={idx} href={s.href} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm flex gap-4 items-center tracking-wide group w-max">
+                          <s.Icon className="w-4 h-4 text-[#555] group-hover:text-brand-accent transition-colors" />
+                          <span className="group-hover:translate-x-1 transition-transform">{s.label}</span>
+                      </a>
+                   ))}
+               </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Play, X } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import weatherAppImg from '../assets/prjImg/weatherApp.png'
 import taskManagerImg from '../assets/prjImg/taskManager.png'
 import appleCloneImg from '../assets/prjImg/appleClone.png'
@@ -13,379 +14,236 @@ import novamart from '../assets/prjImg/novamart.png'
 import lumoraImg from '../assets/prjImg/lumora.png'
 
 export default function Projects() {
-    const [isVisible, setIsVisible] = useState(false);
     const [showAll, setShowAll] = useState(false);
     const [activeVideo, setActiveVideo] = useState(null);
-    const newProjectsRef = useRef(null);
-
-    useEffect(() => {
-        if (showAll && newProjectsRef.current) {
-            if (window.innerWidth < 768) {
-                setTimeout(() => {
-                    const yOffset = -100; // Adjustment for header/spacing
-                    const element = newProjectsRef.current;
-                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                }, 100);
-            }
-        }
-    }, [showAll]);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.intersectionRatio) setIsVisible(true);
-            },
-            { threshold: 0.1 }
-        );
-        const element = document.getElementById("projects");
-        if (element) observer.observe(element);
-        return () => observer.disconnect();
-    }, []);
 
     const featuredProjects = [
         {
             id: 11,
             isInternship: true,
-            title: "Lumora Photography",
-            type: "Premium Studio Management Platform",
-            description: "A comprehensive photography portfolio system with a cinematic frontend and robust admin dashboard. Engineered a premium UX with Lenis smooth scrolling and Framer Motion animations.",
-            problem: "Professional studios need a unique, high-performance platform to showcase portfolios and manage bookings seamlessly.",
-            responsibility: "Full Stack Development (Internship)",
-            techChallenge: "Implementing secure JWT auth for admin panels and real-time automated email notifications.",
+            title: "Lumora Photography CMS",
+            type: "Enterprise Portfolio System",
+            description: "A comprehensive photography portfolio system with a cinematic frontend and robust admin dashboard. Engineered a premium UX with smooth scrolling and Framer Motion animations.",
+            problem: "Professional studios lacked a high-performance, branded platform to manage bookings.",
+            responsibility: "Full Stack Architecture",
+            techChallenge: "Implementing secure JWT auth for admin panels and real-time automated notifications.",
             image: lumoraImg,
-            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Framer Motion", "Cloudinary"],
+            technologies: ["React", "Node.js", "Express", "MongoDB", "Framer Motion", "Cloudinary"],
             git: "https://github.com/Mathiyarasan2102/lumora-photography-cms",
             live: "https://lumora-photography-cms.vercel.app/",
             demo: "https://www.youtube.com/embed/4ZtH75DaCUo?si=fLB8dsmm2q6mGJMd&autoplay=1",
         },
         {
             id: 10,
-            title: "NovaMart - Full Stack E-commerce",
-            type: "Full Stack E-commerce Platform",
-            description: "Built a scalable e-commerce application featuring a comprehensive admin dashboard for dynamic product and order management.",
-            problem: "Need for a scalable e-commerce platform with dynamic management capabilities.",
-            responsibility: "Full Stack Development",
-            techChallenge: "Integrating PayPal for real-time transactions and optimizing UI with Cloudinary.",
+            title: "NovaMart E-commerce",
+            type: "Scalable Full Stack Platform",
+            description: "Built a robust e-commerce application featuring a comprehensive admin dashboard for dynamic product catalogs and order lifecycle management.",
+            problem: "Existing solutions lacked real-time state management for complex cart scaling.",
+            responsibility: "Full Stack Architecture",
+            techChallenge: "Integrating PayPal transactions statefully and optimizing image delivery via Cloudinary.",
             image: novamart,
-            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "Tailwind CSS", "Cloudinary", "PayPal"],
+            technologies: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "PayPal API"],
             git: "https://github.com/Mathiyarasan2102/novamart-mern-ecommerce",
             live: "https://novamart-mern-ecommerce.vercel.app",
             demo: "https://www.youtube.com/embed/bIQz0PakTH4?autoplay=1",
-
         },
         {
             id: 7,
-            title: "QuickChat Realtime Messaging App",
-            type: "MERN Chat Application",
-            description: "Built a real-time messaging platform to facilitate instant communication using the MERN stack and Socket.io, with a focus on low-latency updates and secure authentication.",
-            problem: "Users require instant, reliable messaging without page refreshes.",
-            responsibility: "Full Stack Development",
-            techChallenge: "Handling concurrent socket connections and real-time state synchronization.",
+            title: "QuickChat Realtime",
+            type: "Low-Latency Communication",
+            description: "Engineered a real-time messaging platform using the MERN stack and Socket.io, with a strict focus on low-latency updates and cryptographic authentication.",
+            problem: "Users require instant messaging without page refreshes under heavy concurrency.",
+            responsibility: "Backend & WebSocket Eng.",
+            techChallenge: "Handling concurrent socket connection states and real-time synchronization.",
             image: quickChatImg,
-            technologies: ["React.js", "JavaScript", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Bcrypt"],
+            technologies: ["React", "Node.js", "Socket.io", "MongoDB", "JWT", "Bcrypt"],
             git: "https://github.com/Mathiyarasan2102/ChatApp",
             live: "https://quick-chat-app-puce.vercel.app",
             demo: "https://www.youtube.com/embed/KH4CRY7E8m4?autoplay=1",
-
-        },
-        {
-            id: 1,
-            title: "Weather Dashboard",
-            type: "Data Visualization Web App",
-            description: "Built a weather dashboard to provide accurate location-based forecasts using React and OpenWeatherMap API, focusing on responsive design and API data visualization.",
-            problem: "Need for accurate, real-time weather data visualization across devices.",
-            responsibility: "Frontend Development",
-            techChallenge: "Efficiently managing asynchronous API state and error handling.",
-            image: weatherAppImg,
-            technologies: ["React.js", "JavaScript", "Tailwind CSS", "OpenWeather API"],
-            git: "https://github.com/Mathiyarasan2102/Weather-App",
-            live: "https://weather-app-seven-eta-19.vercel.app/",
-            demo: "https://www.youtube.com/embed/dHqgUSAjn60?autoplay=1",
-
-        },
+        }
     ];
 
-    const otherProjects = [
+    const archivedProjects = [
         {
-            id: 2,
-            title: "ListTask - Task Manager",
-            description: "Smart task organizer featuring drag-and-drop, priority tagging, and local storage persistence.",
+            title: "ListTask Manager",
+            description: "Smart task organizer featuring drag-and-drop mechanics and priority tagging.",
             image: taskManagerImg,
-            technologies: ["React.js", "JavaScript", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Task-Management-App",
             live: "https://task-management-app-omega-smoky.vercel.app/",
             demo: "https://www.youtube.com/embed/tet4gafprag?autoplay=1",
-
         },
         {
-            id: 8,
-            title: "Netflix Login Interface",
-            description: "Responsive login interface with validation and seamless navigation.",
-            image: netflixLoginImg,
-            technologies: ["React.js", "JavaScript", "Tailwind CSS", "Express.js", "Node.js"],
-            git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
-            live: "https://netflix-login-page-2rgp.vercel.app/",
-            demo: "https://www.youtube.com/embed/UxYR7gF87yQ?autoplay=1",
-
+            title: "Weather Dash",
+            description: "API virtualization dashboard for real-time global weather data.",
+            image: weatherAppImg,
+            git: "https://github.com/Mathiyarasan2102/Weather-App",
+            live: "https://weather-app-seven-eta-19.vercel.app/",
         },
         {
-            id: 3,
-            title: "Apple Homepage Clone",
-            description: "High-fidelity replica of Apple's landing page featuring smooth animations.",
+            title: "Apple Landing Clone",
+            description: "High-fidelity UI replica focusing on complex scroll-driven animations.",
             image: appleCloneImg,
-            technologies: ["React.js", "Tailwind CSS"],
             git: "https://github.com/Mathiyarasan2102/Apple-clone-website",
             live: "https://clone-apple-lilac.vercel.app/",
             demo: "https://www.youtube.com/embed/eJ9K_drN-Xc?autoplay=1",
-
         },
         {
-            id: 9,
-            title: "Smart Form Validation",
-            description: "Dynamic form with instant input validation and character counting logic.",
-            image: formValidationImg,
-            technologies: ["HTML5", "CSS3", "JavaScript"],
-            git: "https://github.com/Mathiyarasan2102/form-validation",
-            live: "https://mathiyarasan2102.github.io/form-validation/",
-            demo: "https://www.youtube.com/embed/fN5to190Zuk?autoplay=1",
-
-        },
-        {
-            id: 4,
-            title: "Nostra E-Commerce",
-            description: "Responsive e-commerce landing page optimized for mobile conversions.",
-            image: nostraImg,
-            technologies: ["HTML5", "CSS3", "JavaScript"],
-            git: "https://github.com/Mathiyarasan2102/Nostra-Project",
-            live: "https://mathiyarasan2102.github.io/Nostra-Project/",
-            demo: "https://www.youtube.com/embed/UVRiVqJVw5k?autoplay=1",
-
-        },
-        {
-            id: 5,
-            title: "Greenden Plants",
-            description: "Modern e-commerce showcase for plant products with clean design.",
-            image: greendenImg,
-            technologies: ["HTML5", "CSS3"],
-            git: "https://github.com/Mathiyarasan2102/Greenden-Project",
-            live: "https://mathiyarasan2102.github.io/Greenden-Project/",
-            demo: "https://www.youtube.com/embed/kBw3d4t_GR0?autoplay=1",
-
-        },
-        {
-            id: 6,
-            title: "Udemy Clone",
-            description: "Instructional platform UI replica with course listing structure.",
-            image: udemyCloneImg,
-            technologies: ["HTML5", "CSS3"],
-            git: "https://github.com/Mathiyarasan2102/Udemy-clone-website",
-            live: "https://mathiyarasan2102.github.io/Udemy-clone-website/",
-            demo: "https://www.youtube.com/embed/zwjqUuRTe74?autoplay=1",
-
+            title: "Netflix Auth Flow",
+            description: "Secure, stateful authentication interface with strict form validation.",
+            image: netflixLoginImg,
+            git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
+            live: "https://netflix-login-page-2rgp.vercel.app/",
         }
     ];
 
     return (
-        <section id="projects" className="py-24 bg-slate-950 relative overflow-hidden">
-            <div className="absolute inset-0">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-green-600/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-transparent via-green-600/5 to-transparent"></div>
-            </div>
-
-            <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <section id="projects" className="py-24 bg-brand-dark-surface border-t border-brand-dark-border">
+            <div className="container mx-auto px-6 max-w-6xl">
+                
                 {/* Header */}
-                <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 lg:mb-24"
+                >
+                    <span className="font-sans text-xs text-gray-500 tracking-super-wide uppercase mb-4 block">
+                        Selected Works
+                    </span>
+                    <h2 className="display-heading text-4xl md:text-5xl lg:text-7xl font-bold text-brand-light leading-none">
                         Featured Projects
                     </h2>
-                    <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                        Scalable applications built with modern architecture and performance in mind.
-                    </p>
-                </div>
+                </motion.div>
 
-                {/* Featured Projects Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
+                {/* Main Case Studies */}
+                <div className="space-y-16">
                     {featuredProjects.map((project, index) => (
-                        <div
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.6 }}
                             key={index}
-                            className={`flex flex-col bg-slate-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-500 overflow-hidden border border-slate-700 hover:border-green-500 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                            style={{ transitionDelay: `${index * 150}ms` }}
+                            className="bg-brand-dark border border-brand-dark-border p-6 lg:p-10 group hover:border-gray-700 transition-colors duration-500"
                         >
-                            <div className="relative overflow-hidden aspect-video flex-shrink-0">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-300"
-                                />
-                                {/* Video Hint Overlay */}
-                                <div
-                                    className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px] cursor-pointer z-10"
-                                    onClick={() => setActiveVideo(project.demo || null)}
-                                >
-                                    <div className="bg-slate-900/80 px-4 py-2 rounded-full border border-green-500/50 flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-green-600 hover:border-green-400">
-                                        <Play size={16} className="text-green-400 fill-green-400 group-hover:text-white group-hover:fill-white transition-colors" />
-                                        <span className="text-white text-sm font-medium">View Project Video</span>
-                                    </div>
-                                </div>
-                                <div className="absolute top-3 right-3 flex gap-2 transition-all duration-300 z-20">
-                                    {project.demo && (
-                                        <button
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setActiveVideo(project.demo);
-                                            }}
-                                            className="w-8 h-8 bg-transparent rounded-full border border-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn md:hidden"
-                                            title="Watch Demo"
-                                        >
-                                            <Play className="w-4 h-4 text-green-400 group-hover/btn:text-white fill-current" />
-                                        </button>
-                                    )}
-                                    <a href={project.git} target="_blank" rel="noopener noreferrer">
-                                        <button className="w-8 h-8 bg-transparent rounded-full border border-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn" title="View Code">
-                                            <Github className="w-4 h-4 text-green-400 group-hover/btn:text-white" />
-                                        </button>
-                                    </a>
-                                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                                        <button className="w-8 h-8 bg-transparent border border-green-500 rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300 group/btn" title="Live Demo">
-                                            <ExternalLink className="w-5 h-5 text-green-400 group-hover/btn:text-white" />
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="p-6 flex flex-col flex-grow">
-                                <div className="flex flex-wrap items-center gap-2 mb-3">
-                                    {project.isInternship && (
-                                        <span className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide border border-blue-500/20">
-                                            Internship
-                                        </span>
-                                    )}
-                                    <span className="bg-green-900/30 text-green-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide">
-                                        {project.type}
-                                    </span>
-                                </div>
-                                <h4 className="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-all duration-300">
-                                    {project.title}
-                                </h4>
-                                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                                    {project.description}
-                                </p>
-
-                                <div className="space-y-2 mb-6 text-xs text-gray-400 border-t border-slate-800 pt-4 mt-auto">
-                                    <p><strong className="text-slate-300">Problem:</strong> {project.problem}</p>
-                                    <p><strong className="text-slate-300">Role:</strong> {project.responsibility}</p>
-                                    <p><strong className="text-slate-300">Challenge:</strong> {project.techChallenge}</p>
-                                </div>
-
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {project.technologies.map((tech, idx) => (
-                                        <span key={idx} className="bg-slate-800 text-gray-300 px-2 py-1 rounded text-xs font-medium border border-slate-700">
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Other Projects Section */}
-                <div className={`text-center mb-10 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                        Other Projects
-                    </h3>
-                    <p className="text-gray-400 text-base">
-                        UI Clones & Small Applications
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {(showAll ? otherProjects : otherProjects.slice(0, 3)).map((project, index) => (
-                        <div
-                            key={index}
-                            ref={index === 3 ? newProjectsRef : null}
-                            className={`group relative bg-slate-900/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-slate-800 hover:border-slate-600 animate-fadeInUp ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                            style={{
-                                transitionDelay: `${index < 3 ? (index + featuredProjects.length) * 100 : (index - 3) * 150}ms`,
-                                animationDelay: `${index < 3 ? (index + featuredProjects.length) * 100 : (index - 3) * 150}ms`
-                            }}
-                        >
-                            <div className="p-4">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h4 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
-                                        {project.title}
-                                    </h4>
-                                    <div className="flex gap-2">
+                            <div className="grid lg:grid-cols-12 gap-10">
+                                
+                                <div className="lg:col-span-7 relative z-10 hidden md:block">
+                                    <div className="relative aspect-video overflow-hidden border border-brand-dark-border bg-brand-dark-surface">
+                                        <div className="absolute inset-0 bg-transparent group-hover:bg-brand-accent/10 z-10 transition-colors duration-500 pointer-events-none"></div>
+                                        <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-duration-700 grayscale group-hover:grayscale-0" />
+                                        
+                                        {/* Video Prompt Overlay */}
                                         {project.demo && (
-                                            <button
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    setActiveVideo(project.demo);
-                                                }}
-                                                className="text-gray-400 cursor-pointer hover:text-green-400 transition-colors"
-                                                title="View Demo"
+                                            <div 
+                                                className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                                                onClick={() => setActiveVideo(project.demo)}
                                             >
-                                                <Play size={16} />
-                                            </button>
+                                                <div className="flex items-center gap-3 border border-brand-accent bg-black/80 px-4 py-2 text-xs tracking-widest font-sans uppercase text-brand-accent hover:bg-brand-accent hover:text-white transition-colors">
+                                                    <Play size={14} fill="currentColor" /> Play Demo
+                                                </div>
+                                            </div>
                                         )}
-                                        <a href={project.git} target="_blank" className="text-gray-400 hover:text-white" title="View Code"><Github size={16} /></a>
-                                        <a href={project.live} target="_blank" className="text-gray-400 hover:text-white" title="Live Demo"><ExternalLink size={16} /></a>
                                     </div>
                                 </div>
-                                <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                                    {project.description}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.technologies.slice(0, 3).map((tech, idx) => (
-                                        <span key={idx} className="text-xs text-slate-500 bg-slate-950 px-2 py-1 rounded">
-                                            {tech}
+
+                                <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
+                                    {project.isInternship && (
+                                        <span className="font-sans text-xxs text-brand-accent-hover border border-brand-accent-hover/30 bg-brand-accent-hover/10 px-2 py-1 uppercase tracking-widest w-fit mb-4 block">
+                                            Commercial Project
                                         </span>
-                                    ))}
+                                    )}
+                                    <h3 className="display-heading text-3xl font-bold text-white mb-2">{project.title}</h3>
+                                    <span className="font-sans text-xs text-brand-muted tracking-widest uppercase block mb-6">{project.type}</span>
+                                    
+                                    <div className="bg-brand-dark-surface border left-0 border-brand-dark-border p-5 lg:-ml-12 lg:mr-0 z-30 mb-6 font-sans text-sm md:text-base text-gray-300 shadow-2xl relative">
+                                        {project.description}
+                                    </div>
+
+                                    <div className="space-y-3 font-sans text-xs text-gray-400 mb-6">
+                                        <p><span className="text-brand-light uppercase">Role</span> &mdash; {project.responsibility}</p>
+                                        <p><span className="text-brand-accent uppercase">Challenge</span> &mdash; {project.techChallenge}</p>
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-2 mb-8">
+                                        {project.technologies.map((tech, idx) => (
+                                            <span key={idx} className="font-mono text-xxs text-gray-400 bg-brand-dark-border px-2 py-1 uppercase tracking-wider">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <div className="flex items-center gap-6 font-sans text-xs tracking-widest uppercase mt-6">
+                                        <a href={project.git} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-brand-accent transition-colors"><Github size={16} /> Source</a>
+                                        <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-brand-accent transition-colors"><ExternalLink size={16} /> Visit</a>
+                                    </div>
                                 </div>
-                                {/* Video Hint Badge Removed from here to fix overlap */}
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className="mt-12 text-center">
-                    <button
-                        onClick={() => setShowAll(!showAll)}
-                        className="px-6 py-2 rounded-full border border-slate-700 text-slate-300 hover:text-white hover:border-green-500 transition-all text-sm font-medium"
-                    >
-                        {showAll ? 'Show Less' : 'View More Projects'}
-                    </button>
-                </div>
+                {/* Additional Log */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="mt-24"
+                >
+                    <h3 className="font-display font-medium text-2xl text-brand-light mb-8 border-b border-brand-dark-border pb-4">
+                        Archived Projects
+                    </h3>
+                    
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {archivedProjects.map((project, idx) => (
+                            <div key={idx} className="border border-brand-dark-border bg-brand-dark-surface p-6 group hover:border-brand-accent/50 transition-colors">
+                                <div className="flex justify-between items-start mb-4">
+                                    <h4 className="font-sans font-bold text-white text-sm">{project.title}</h4>
+                                    <a href={project.git} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white"><Github size={14}/></a>
+                                </div>
+                                <p className="font-sans text-xs text-gray-500 leading-relaxed mb-6">
+                                    {project.description}
+                                </p>
+                                <div className="flex items-center justify-between mt-auto">
+                                   <a href={project.live} target="_blank" rel="noreferrer" className="font-sans text-xxs text-brand-accent hover:text-brand-light uppercase tracking-widest cursor-pointer">Visit Site</a>
+                                   {project.demo && (
+                                       <button onClick={() => setActiveVideo(project.demo)} className="text-gray-500 hover:text-brand-light cursor-pointer"><Play size={12}/></button>
+                                   )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
 
             {/* Video Modal */}
-            {
-                activeVideo && (
-                    <div
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-8 animate-fadeIn"
+            <AnimatePresence>
+                {activeVideo && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 md:p-8"
                         onClick={() => setActiveVideo(null)}
                     >
                         <div
-                            className="relative w-full max-w-5xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl"
+                            className="relative w-full max-w-5xl bg-brand-dark rounded-none border border-gray-800 shadow-2xl"
                             onClick={e => e.stopPropagation()}
                         >
-                            <div className="flex justify-between items-center p-4 border-b border-slate-700 bg-slate-900/50">
-                                <h3 className="text-white font-semibold flex items-center gap-2">
-                                    <Play size={18} className="text-green-400 fill-green-400" />
+                            <div className="flex justify-between items-center p-4 border-b border-gray-800 bg-brand-dark-surface">
+                                <h3 className="text-brand-light font-sans tracking-widest text-xs uppercase flex items-center gap-2">
+                                    <Play size={14} className="text-brand-accent fill-brand-accent" />
                                     Project Demo
                                 </h3>
                                 <button
                                     onClick={() => setActiveVideo(null)}
-                                    className="text-gray-400 hover:text-white hover:bg-red-500/20 p-2 rounded-full transition-all"
+                                    className="text-gray-400 hover:text-brand-accent transition-colors cursor-pointer"
                                 >
                                     <X size={20} />
                                 </button>
                             </div>
                             <div className="relative pt-[56.25%] bg-black">
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-10 h-10 border-4 border-slate-700 border-t-green-500 rounded-full animate-spin"></div>
+                                    <span className="font-sans tracking-widest text-xs text-brand-accent animate-pulse">Loading Video...</span>
                                 </div>
                                 <iframe
                                     className="absolute inset-0 w-full h-full z-10"
@@ -397,9 +255,9 @@ export default function Projects() {
                                 ></iframe>
                             </div>
                         </div>
-                    </div>
-                )
-            }
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section >
     );
 }

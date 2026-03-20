@@ -1,31 +1,7 @@
 import { Briefcase, Calendar } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const Experience = () => {
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
-
     const experiences = [
         {
             id: 1,
@@ -33,80 +9,80 @@ const Experience = () => {
             company: "Least Action Company Pvt. Ltd.",
             location: "Remote",
             period: "Oct 2025 – Jan 2026",
-            description: [
-                "Developed LuxeEstate, a production-ready real estate platform with Role-Based Access Control (RBAC) ensuring secure access for Admin, Seller, and User roles.",
-                "Designed and optimized MongoDB schemas to efficiently manage complex relationships between users, property listings, and bookings.",
-                "Built a dynamic Admin Dashboard with data visualization tools for real-time monitoring of user activity and property metrics.",
-                "Implemented robust JWT authentication and protected routes to secure client-server communication.",
-                "Refactored existing codebases to improve performance, reducing load times and enhancing maintainability.",
-                "Collaborated with cross-functional teams using Git/GitHub and aligned with Agile methodologies to deliver features on schedule."
+            logItems: [
+                "Developed LuxeEstate, a production-ready real estate platform with RBAC ensuring secure routing across multiple tenancy levels.",
+                "Architected MongoDB schemas to efficiently manage complex relations between users, listings, and transactional bookings.",
+                "Engineered a core Admin Dashboard with data visualization mechanisms for real-time monitoring of scaling metrics.",
+                "Enforced strict JWT authentication patterns and protected API routes to guarantee secure client-server data transfer.",
+                "Executed aggressive code refactoring, dropping load times and establishing a maintainable monorepo-style structure."
             ]
         }
     ];
 
     return (
-        <section id="experience" className="py-20 bg-slate-950 relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        <section id="experience" className="py-24 bg-brand-dark-surface border-t border-brand-dark-border">
+            <div className="container mx-auto px-6 lg:px-20 max-w-7xl">
+                
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-16 lg:mb-24"
+                >
+                    <span className="font-sans text-xxs text-gray-500 tracking-super-wide uppercase mb-6 block">
+                        Experience
+                    </span>
+                    <h2 className="display-heading text-5xl lg:text-7xl font-bold text-brand-light leading-[1.1] tracking-tight">
+                        Professional<br /> Background
+                    </h2>
+                </motion.div>
 
-            <div className="container mx-auto px-4 relative z-10" ref={sectionRef}>
-                <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Experience</h2>
-                    <div className="w-20 h-1 bg-green-500 mx-auto rounded-full"></div>
-                </div>
-
-                <div className="max-w-4xl mx-auto">
+                <div className="space-y-12">
                     {experiences.map((exp, index) => (
-                        <div
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                             key={exp.id}
-                            className={`relative pl-8 md:pl-0 transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
+                            className="bg-brand-dark border border-brand-dark-border p-10 lg:p-14 relative group hover:border-brand-accent/40 transition-colors"
                         >
-                            {/* Timeline Line (Desktop) */}
-                            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2"></div>
-
-                            {/* Timeline Dot (Desktop) */}
-                            <div className="hidden md:flex absolute left-1/2 top-0 w-12 h-12 bg-slate-900 border-2 border-green-500 rounded-full items-center justify-center transform -translate-x-1/2 shadow-[0_0_15px_rgba(34,197,94,0.3)] z-10">
-                                <Briefcase size={20} className="text-green-400" />
+                            <div className="absolute top-0 right-0 p-5 border-l border-b border-brand-dark-border bg-brand-dark-surface group-hover:bg-brand-accent/10 transition-colors duration-500">
+                                <Briefcase size={22} className="text-brand-accent group-hover:text-brand-light transition-colors" strokeWidth={1.5} />
                             </div>
 
-                            <div className="md:flex justify-between items-start gap-10 group">
-                                {/* Left Side (Date & Location) */}
-                                <div className="md:w-1/2 md:text-right md:pr-12 mb-4 md:mb-0">
-                                    <div className="inline-block bg-slate-900/80 border border-slate-700 rounded-lg px-4 py-2 mb-2 shadow-sm group-hover:border-green-500/50 transition-colors duration-300">
-                                        <div className="flex items-center gap-2 text-green-400 font-semibold md:justify-end">
-                                            <Calendar size={16} />
-                                            <span>{exp.period}</span>
+                            <div className="grid lg:grid-cols-4 gap-12">
+                                <div className="lg:col-span-1 border-b lg:border-b-0 lg:border-r border-brand-dark-border pb-8 lg:pb-0 pr-8">
+                                    <h3 className="font-display font-medium text-2xl text-brand-light mb-4">{exp.company}</h3>
+                                    <div className="font-sans text-xs text-brand-accent mb-8 flex items-center gap-3 tracking-widest font-light">
+                                        <Calendar size={14} strokeWidth={1.5} /> {exp.period}
+                                    </div>
+                                    <div className="space-y-6 font-sans text-xxs text-gray-500 uppercase tracking-super-wide">
+                                        <div>
+                                            <p className="mb-2 text-brand-muted">Status</p>
+                                            <p className="font-sans text-brand-light font-light capitalize tracking-normal text-base">Completed</p>
+                                        </div>
+                                        <div>
+                                            <p className="mb-2 text-brand-muted">Location</p>
+                                            <p className="font-sans text-brand-light font-light capitalize tracking-normal text-base">{exp.location}</p>
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-green-400 transition-colors duration-300">{exp.company}</h3>
-                                    <p className="text-slate-400 text-sm font-medium flex items-center gap-1 md:justify-end">
-                                        {exp.location}
-                                    </p>
                                 </div>
 
-                                {/* Timeline Line & Dot (Mobile) */}
-                                <div className="md:hidden absolute left-0 top-0 bottom-0 w-px bg-slate-800 ml-3"></div>
-                                <div className="md:hidden absolute left-0 top-0 w-8 h-8 bg-slate-900 border-2 border-green-500 rounded-full flex items-center justify-center -ml-1 shadow-[0_0_10px_rgba(34,197,94,0.3)] z-10">
-                                    <Briefcase size={14} className="text-green-400" />
-                                </div>
-
-                                {/* Right Side (Role & Description) */}
-                                <div className="md:w-1/2 md:pl-12 pb-12">
-                                    <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:bg-slate-900 hover:border-slate-600 transition-all duration-300 shadow-lg group-hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
-                                        <h4 className="text-2xl font-bold text-white mb-4">{exp.role}</h4>
-                                        <ul className="space-y-3">
-                                            {exp.description.map((item, i) => (
-                                                <li key={i} className="flex items-start text-slate-300 text-sm leading-relaxed">
-                                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                <div className="lg:col-span-3">
+                                    <h4 className="font-display font-medium text-2xl text-brand-light mb-8 tracking-wide">{exp.role}</h4>
+                                    <ul className="space-y-6">
+                                        {exp.logItems.map((item, i) => (
+                                            <li key={i} className="flex items-start text-gray-400 font-sans text-base font-light leading-relaxed">
+                                                <span className="text-brand-accent mr-6 mt-1.5 font-sans text-xxs select-none uppercase tracking-super-wide">{i+1}</span>
+                                                <span className="flex-1">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

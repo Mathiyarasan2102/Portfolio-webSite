@@ -1,14 +1,15 @@
-import { Menu, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isScrolled, setIsScrolled] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
-        }
+        };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -19,99 +20,96 @@ export default function Header() {
             const headerOffset = 80;
             const elementPosition = element.getBoundingClientRect().top + window.scrollY;
             const offsetPosition = elementPosition - headerOffset;
-
             window.scrollTo({
                 top: offsetPosition > 0 ? offsetPosition : 0,
                 behavior: "smooth"
             });
         }
-        setIsMenuOpen(false)
+        setIsMenuOpen(false);
     };
 
-
-
-
-
     const navItems = [
-        { name: "Home", href: "#home" },
-        { name: "About", href: "#about" },
-        { name: "Experience", href: "#experience" },
-        { name: "Skills", href: "#skills" },
-        { name: "Projects", href: "#projects" },
-        { name: "Contact", href: "#contact" }
+        { name: "01. Home", href: "#home" },
+        { name: "02. About", href: "#about" },
+        { name: "03. Experience", href: "#experience" },
+        { name: "04. Skills", href: "#skills" },
+        { name: "05. Selected Works", href: "#projects" },
+        { name: "06. Contact", href: "#contact" }
     ];
 
     return (
-        <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "bg-slate-950 backdrop-blur-lg shadow-lg border-b border-slate-800" : "bg-transparent"}`}>
-                <div className="container mx-auto px-4 sm:px-6 md:px-8 py-3 sm:py-4">
-                    <div className="flex items-center justify-between">
-                        {/* Logo */}
-                        <div onClick={() => scrollToSection("#home")} className="text-xl cursor-pointer sm:text-2xl md:text-3xl font-bold">
-                            <span className="text-green-400">Mathiy</span>
-                            <span className="text-white">arasan</span>
-                            <span className="text-green-400">.</span>
-                        </div>
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "bg-brand-dark/90 backdrop-blur-md border-b border-brand-dark-border" : "bg-transparent border-b border-transparent"}`}>
+            <div className="container mx-auto px-6 py-5">
+                <div className="flex items-center justify-between">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-xl font-display font-medium cursor-pointer tracking-wider text-brand-light" 
+                        onClick={() => scrollToSection("#home")}
+                    >
+                        MATHIYARASAN<span className="text-brand-accent">.</span>
+                    </motion.div>
 
-                        {/* Desktop Nav */}
-                        <nav className="hidden md:flex space-x-4 lg:space-x-8">
-                            {
-                                navItems.map((item, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => scrollToSection(item.href)}
-                                        className="text-sm lg:text-base text-gray-300 cursor-pointer hover:text-green-400 transition-all duration-300 font-medium relative group"
-                                        style={{ animationDelay: `${index * 0.1}s` }}
-                                    >
-                                        {item.name}
-                                        <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
-                                    </button>
-                                ))
-                            }
-                        </nav>
+                    <nav className="hidden md:flex space-x-10">
+                        {navItems.map((item, index) => (
+                            <motion.button
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                key={index}
+                                onClick={() => scrollToSection(item.href)}
+                                className="text-xs font-sans tracking-mega-wide text-gray-500 hover:text-white transition-colors duration-300 uppercase cursor-pointer"
+                            >
+                                {item.name}
+                            </motion.button>
+                        ))}
+                    </nav>
 
-                        {/* Desktop Resume Btn */}
-                        <a
-                            href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
-                            download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
-                            className="hidden md:flex cursor-pointer items-center gap-2 bg-green-600 text-white px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 rounded-lg hover:bg-green-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 text-sm sm:text-base"
-                        >
-                            Download CV Now
-                        </a>
+                    <motion.a
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                        download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
+                        className="hidden md:inline-flex luxury-button px-6 py-2.5 text-xxs tracking-super-wide cursor-pointer"
+                    >
+                        RESUME
+                    </motion.a>
 
-                        {/* Mobile Menu Toggle */}
-                        <button
-                            className="text-white cursor-pointer md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
-                    </div>
+                    <button className="md:hidden text-white cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        {isMenuOpen ? <X size={28} strokeWidth={1} /> : <Menu size={28} strokeWidth={1} />}
+                    </button>
+                </div>
+            </div>
 
-                    {/* Mobile Nav */}
-                    {isMenuOpen && (
-                        <nav className="md:hidden mt-3 sm:mt-4 pb-3 sm:pb-4 border-t border-slate-800 pt-3 sm:pt-4 bg-slate-800 rounded-lg shadow-lg">
-                            {
-                                navItems.map((item, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => scrollToSection(item.href)}
-                                        className="block cursor-pointer w-full text-left py-2.5 sm:py-3 px-3 sm:px-4 text-sm sm:text-base text-gray-300 hover:text-green-400 hover:bg-slate-700 transition-all duration-300 rounded-lg"
-                                        style={{ animationDelay: `${index * 0.9}s` }}
-                                    >
-                                        {item.name}
-                                    </button>
-                                ))
-                            }
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.nav 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="md:hidden overflow-hidden bg-brand-dark-surface border-b border-brand-dark-border"
+                    >
+                        <div className="px-6 py-8 space-y-6 flex flex-col items-start px-8">
+                            {navItems.map((item, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => scrollToSection(item.href)}
+                                    className="font-sans text-sm tracking-super-wide text-gray-400 hover:text-white transition-colors cursor-pointer uppercase flex items-center gap-4"
+                                >
+                                    {item.name}
+                                </button>
+                            ))}
                             <a
                                 href="/Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
                                 download="Mathiyarasan_P_MERN_Stack_Developer_Resume.pdf"
-                                className="mt-3 cursor-pointer sm:mt-4 w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 sm:px-6 py-2.5 rounded-lg hover:bg-green-700 transition-all duration-300 text-sm sm:text-base"
+                                className="luxury-button px-6 py-4 mt-6 w-full text-center cursor-pointer text-xs tracking-super-wide"
                             >
-                                Download CV Now
+                                DOWNLOAD RESUME
                             </a>
-                        </nav>
-                    )}
-                </div>
-            </header>
-        </>
-    )
+                        </div>
+                    </motion.nav>
+                )}
+            </AnimatePresence>
+        </header>
+    );
 }
