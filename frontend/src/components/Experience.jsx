@@ -10,11 +10,11 @@ const Experience = () => {
             location: "Remote",
             period: "Oct 2025 – Jan 2026",
             logItems: [
-                "Developed LuxeEstate, a production-ready real estate platform with RBAC ensuring secure routing across multiple tenancy levels.",
-                "Architected MongoDB schemas to efficiently manage complex relations between users, listings, and transactional bookings.",
-                "Engineered a core Admin Dashboard with data visualization mechanisms for real-time monitoring of scaling metrics.",
-                "Enforced strict JWT authentication patterns and protected API routes to guarantee secure client-server data transfer.",
-                "Executed aggressive code refactoring, dropping load times and establishing a maintainable monorepo-style structure."
+                "Architected and deployed two enterprise-grade platforms (Lumora CMS & LuxeEstate) using the MERN stack, managing the full development lifecycle from database design to frontend execution.",
+                "Engineered premium, cinematic user experiences utilizing React, Tailwind CSS, and Framer Motion, specifically focusing on smooth scroll-driven animations and dynamic state management.",
+                "Implemented secure backend infrastructures with Node.js and Express, enforcing strict JWT authentication and Role-Based Access Control (RBAC) for distinct admin, agent, and client dashboards.",
+                "Designed scalable MongoDB schemas to handle complex relational data, powering high-performance property filtering algorithms and automated real-time booking notifications.",
+                "Optimized heavy media delivery workflows by integrating Cloudinary for automated high-resolution image processing, drastically reducing page load times."
             ]
         }
     ];
