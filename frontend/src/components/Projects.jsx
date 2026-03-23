@@ -142,14 +142,15 @@ export default function Projects() {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6 }}
                             key={index}
-                            className="bg-brand-dark border border-brand-dark-border p-6 lg:p-10 group hover:border-gray-700 transition-colors duration-500"
+                            tabIndex={0}
+                            className="bg-brand-dark border border-brand-dark-border p-6 lg:p-10 group hover:border-gray-700 max-md:focus:border-gray-700 transition-colors duration-500 outline-none"
                         >
                             <div className="grid lg:grid-cols-12 gap-10">
                                 
                                 <div className="lg:col-span-7 relative z-10 mb-8 lg:mb-0">
                                     <div className="relative aspect-video overflow-hidden border border-brand-dark-border bg-brand-dark-surface">
-                                        <div className="absolute inset-0 bg-transparent group-hover:bg-brand-accent/10 z-10 transition-colors duration-500 pointer-events-none"></div>
-                                        <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-duration-700 grayscale group-hover:grayscale-0" />
+                                        <div className="absolute inset-0 bg-transparent group-hover:bg-brand-accent/10 max-md:group-active:bg-brand-accent/10 max-md:group-focus:bg-brand-accent/10 z-10 transition-colors duration-500 pointer-events-none"></div>
+                                        <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 max-md:group-active:opacity-100 max-md:group-focus:opacity-100 transition-duration-700 grayscale group-hover:grayscale-0 max-md:group-active:grayscale-0 max-md:group-focus:grayscale-0" />
                                         
 
                                     </div>
