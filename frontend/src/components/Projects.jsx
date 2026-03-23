@@ -146,7 +146,7 @@ export default function Projects() {
                         >
                             <div className="grid lg:grid-cols-12 gap-10">
                                 
-                                <div className="lg:col-span-7 relative z-10 hidden md:block">
+                                <div className="lg:col-span-7 relative z-10 mb-8 lg:mb-0">
                                     <div className="relative aspect-video overflow-hidden border border-brand-dark-border bg-brand-dark-surface">
                                         <div className="absolute inset-0 bg-transparent group-hover:bg-brand-accent/10 z-10 transition-colors duration-500 pointer-events-none"></div>
                                         <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-duration-700 grayscale group-hover:grayscale-0" />
