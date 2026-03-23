@@ -12,6 +12,7 @@ import netflixLoginImg from '../assets/prjImg/netflixLogin.png'
 import formValidationImg from '../assets/prjImg/formValidation.png'
 import novamart from '../assets/prjImg/novamart.png'
 import lumoraImg from '../assets/prjImg/lumora.png'
+import luxeEstateImg from '../assets/prjImg/luxeEstate.png'
 
 export default function Projects() {
     const [showAll, setShowAll] = useState(false);
@@ -32,6 +33,21 @@ export default function Projects() {
             git: "https://github.com/Mathiyarasan2102/lumora-photography-cms",
             live: "https://lumora-photography-cms.vercel.app/",
             demo: "https://www.youtube.com/embed/4ZtH75DaCUo?si=fLB8dsmm2q6mGJMd&autoplay=1",
+        },
+        {
+            id: 12,
+            isInternship: true,
+            title: "LuxeEstate Platform",
+            type: "Real Estate Marketplace",
+            description: "A modern, full-stack real estate marketplace designed with a sophisticated UI, robust property management tools, and comprehensive role-based access control for Buyers, Agents, and Admins.",
+            problem: "Market needed a high-performance platform to securely manage diverse roles in real estate transactions.",
+            responsibility: "Full Stack Architecture",
+            techChallenge: "Implementing secure RBAC dashboards and complex, multi-parameter advanced search filtering.",
+            image: luxeEstateImg,
+            technologies: ["React", "Express.js", "MongoDB", "Redux Toolkit", "Tailwind CSS"],
+            git: "https://github.com/Mathiyarasan2102/LuxeEstate-RealEstate-Website",
+            live: "https://luxe-estate-real-estate-website-fro.vercel.app",
+            demo: "https://www.youtube.com/embed/IWvSL2BFWMQ?autoplay=1",
         },
         {
             id: 10,
@@ -78,6 +94,7 @@ export default function Projects() {
             image: weatherAppImg,
             git: "https://github.com/Mathiyarasan2102/Weather-App",
             live: "https://weather-app-seven-eta-19.vercel.app/",
+            demo: "https://www.youtube.com/embed/dHqgUSAjn60?autoplay=1",
         },
         {
             title: "Apple Landing Clone",
@@ -93,6 +110,7 @@ export default function Projects() {
             image: netflixLoginImg,
             git: "https://github.com/Mathiyarasan2102/Netflix-Login-Page",
             live: "https://netflix-login-page-2rgp.vercel.app/",
+            demo: "https://www.youtube.com/embed/UxYR7gF87yQ?autoplay=1",
         }
     ];
 
@@ -133,24 +151,14 @@ export default function Projects() {
                                         <div className="absolute inset-0 bg-transparent group-hover:bg-brand-accent/10 z-10 transition-colors duration-500 pointer-events-none"></div>
                                         <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-duration-700 grayscale group-hover:grayscale-0" />
                                         
-                                        {/* Video Prompt Overlay */}
-                                        {project.demo && (
-                                            <div 
-                                                className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer backdrop-blur-sm"
-                                                onClick={() => setActiveVideo(project.demo)}
-                                            >
-                                                <div className="flex items-center gap-3 border border-brand-accent bg-black/80 px-4 py-2 text-xs tracking-widest font-sans uppercase text-brand-accent hover:bg-brand-accent hover:text-white transition-colors">
-                                                    <Play size={14} fill="currentColor" /> Play Demo
-                                                </div>
-                                            </div>
-                                        )}
+
                                     </div>
                                 </div>
 
                                 <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
                                     {project.isInternship && (
                                         <span className="font-sans text-xxs text-brand-accent-hover border border-brand-accent-hover/30 bg-brand-accent-hover/10 px-2 py-1 uppercase tracking-widest w-fit mb-4 block">
-                                            Commercial Project
+                                            Internship Project
                                         </span>
                                     )}
                                     <h3 className="display-heading text-3xl font-bold text-white mb-2">{project.title}</h3>
@@ -173,9 +181,12 @@ export default function Projects() {
                                         ))}
                                     </div>
 
-                                    <div className="flex items-center gap-6 font-sans text-xs tracking-widest uppercase mt-6">
+                                    <div className="flex flex-wrap items-center gap-6 font-sans text-xs tracking-widest uppercase mt-6">
                                         <a href={project.git} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-brand-accent transition-colors"><Github size={16} /> Source</a>
                                         <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-brand-accent transition-colors"><ExternalLink size={16} /> Visit</a>
+                                        {project.demo && (
+                                            <button onClick={() => setActiveVideo(project.demo)} className="flex items-center gap-2 text-brand-accent hover:text-white transition-colors cursor-pointer"><Play size={16} fill="currentColor" /> Demo</button>
+                                        )}
                                     </div>
                                 </div>
                             </div>

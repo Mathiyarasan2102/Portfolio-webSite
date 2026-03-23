@@ -15,17 +15,22 @@ export default function Header() {
     }, []);
 
     const scrollToSection = (href) => {
-        const element = document.querySelector(href);
-        if (element) {
-            const headerOffset = 80;
-            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = elementPosition - headerOffset;
-            window.scrollTo({
-                top: offsetPosition > 0 ? offsetPosition : 0,
-                behavior: "smooth"
-            });
-        }
         setIsMenuOpen(false);
+        
+        // Add a small delay for mobile browsers to allow the menu closing animation
+        // to start, which prevents scroll interruption issues.
+        setTimeout(() => {
+            const element = document.querySelector(href);
+            if (element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition > 0 ? offsetPosition : 0,
+                    behavior: "smooth"
+                });
+            }
+        }, 100);
     };
 
     const navItems = [
